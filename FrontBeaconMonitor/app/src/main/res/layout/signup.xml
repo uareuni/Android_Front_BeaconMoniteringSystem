@@ -1,6 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_green_dark">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Create your account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textColor="@android:color/background_light"
+            android:layout_marginBottom="10dp"
+            android:textStyle="normal|bold" />
+
+        <!-- ID(email) -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:background="@android:color/white"
+            android:layout_marginTop="30dp"
+            android:gravity="center">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/email_input"
+                android:hint="ID (email)"
+                android:singleLine="true"
+                android:layout_weight="0.05"
+                android:paddingLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_email"
+                android:background="@null"
+                android:selectAllOnFocus="false"
+                android:layout_alignBottom="@+id/icon_email"
+                android:layout_alignTop="@+id/icon_email" />
+
+            <ImageView
+                android:id="@+id/icon_email"
+                android:src="@mipmap/icon_email"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:padding="5dp"
+                android:layout_marginLeft="3dp" />
+        </RelativeLayout>
+
+
+        <!-- Password -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:background="@android:color/white"
+            android:layout_marginTop="15dp"
+            android:gravity="center">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:ems="10"
+                android:id="@+id/password_input"
+                android:hint="password"
+                android:singleLine="true"
+                android:layout_weight="0.05"
+                android:paddingLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_password"
+                android:background="@null"
+                android:selectAllOnFocus="false"
+                android:layout_alignBottom="@+id/icon_password"
+                android:layout_alignTop="@+id/icon_password"
+                android:inputType="textPassword" />
+
+            <ImageView
+                android:id="@+id/icon_password"
+                android:src="@mipmap/icon_password"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:padding="5dp"
+                android:layout_marginLeft="3dp" />
+        </RelativeLayout>
+
+
+        <!-- Birth -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:background="@android:color/white"
+            android:layout_marginTop="15dp"
+            android:gravity="center">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:ems="10"
+                android:id="@+id/birth_input"
+                android:hint="birth"
+                android:singleLine="true"
+                android:layout_weight="0.05"
+                android:paddingLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_birth"
+                android:background="@null"
+                android:selectAllOnFocus="false"
+                android:layout_alignBottom="@+id/icon_birth"
+                android:layout_alignTop="@+id/icon_birth"
+                android:inputType="numberSigned" />
+
+            <ImageView
+                android:id="@+id/icon_birth"
+                android:src="@mipmap/icon_birth"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:padding="5dp"
+                android:layout_marginLeft="3dp" />
+        </RelativeLayout>
+
+
+        <!-- home address -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:background="@android:color/white"
+            android:layout_marginTop="15dp"
+            android:gravity="center">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPostalAddress"
+                android:ems="10"
+                android:id="@+id/address_input"
+                android:singleLine="true"
+                android:layout_weight="0.05"
+                android:paddingLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_home"
+                android:background="@null"
+                android:selectAllOnFocus="false"
+                android:layout_alignBottom="@+id/icon_home"
+                android:layout_alignTop="@+id/icon_home"
+                android:hint="address" />
+
+            <ImageView
+                android:id="@+id/icon_home"
+                android:src="@mipmap/icon_home"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:padding="5dp"
+                android:layout_marginLeft="3dp" />
+        </RelativeLayout>
+
+
+        <!-- phone number -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:background="@android:color/white"
+            android:layout_marginTop="15dp"
+            android:gravity="center">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textPersonName|phone"
+                android:ems="10"
+                android:id="@+id/phone_input"
+                android:singleLine="true"
+                android:layout_weight="0.05"
+                android:paddingLeft="10dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_phone"
+                android:background="@null"
+                android:selectAllOnFocus="false"
+                android:layout_alignBottom="@+id/icon_phone"
+                android:layout_alignTop="@+id/icon_phone"
+                android:hint="phone number" />
+
+            <ImageView
+                android:id="@+id/icon_phone"
+                android:src="@mipmap/icon_phone"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:padding="5dp"
+                android:layout_marginLeft="3dp" />
+        </RelativeLayout>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="resister"
+            android:id="@+id/button2"
+            android:background="@drawable/selector_xml_btn_yellow"
+            android:layout_gravity="center_horizontal"
+            android:elevation="0dp" />
+
+    </LinearLayout>
 </LinearLayout>

@@ -14,9 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText emailEditText;
     private EditText passEditText;
-
     private Button resister_btn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     /**
      * -----------------  < optional part >  ------------------------
      */
-
 
     // validating email id
     private boolean isValidEmail(String email) {
