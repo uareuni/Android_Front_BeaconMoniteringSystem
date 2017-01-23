@@ -34,7 +34,7 @@
             android:id="@+id/password"
             android:drawableLeft="@mipmap/lock"
             android:hint="Password"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="3dp"
             android:textColor="#FFF"
             android:paddingLeft="0dp"
             android:drawablePadding="5dp"

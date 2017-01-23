@@ -222,10 +222,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="resister"
-            android:id="@+id/button2"
+            android:id="@+id/resister_btn"
             android:background="@drawable/selector_xml_btn_yellow"
             android:layout_gravity="center_horizontal"
-            android:elevation="0dp" />
+            android:elevation="0dp"
+            android:onClick="onResisterClicked" />
 
     </LinearLayout>
 </LinearLayout>
