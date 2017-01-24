@@ -93,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
                     List<Repo> test = response.body(); // 이렇게 받아오면 됩니다.
                     Log.d("git", "호출 성공!");
 
+
+
                     Iterator<Repo> itr = test.iterator();
                     while(itr.hasNext())
                     {
@@ -105,6 +107,32 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("git", "호출 실패ㅠㅠ");
                 }
             });
+
+
+
+/*
+            // POST
+            Retrofit retrofit2 = new Retrofit.Builder()
+                    .baseUrl("http://echo.jsontest.com/key/value/one/two")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            GithubServiceSample service2 = retrofit2.create(GithubServiceSample.class);
+            Call<Task> call = service2.createTask(new Task("안녕", "하세요!"));
+
+            call.enqueue(new Callback<Task>() {
+                @Override
+                public void onResponse(Call<Task> call, Response<Task> response)
+                {
+                    Task test = response.body();
+                    Log.i("git", "test2" + test.toString());
+                }
+
+                @Override
+                public void onFailure(Call<Task> call, Throwable t) {
+
+                }
+            });
+*/
 
         }
 
