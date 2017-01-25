@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             // Validation Completed
 
             /**
-             *  < retrofit2 >
+             *  < retrofit2 : GET > - server로부터 json 받아오기
              */
 
             // 1. retrofit obj
@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("git", "호출 성공!");
 
 
-
                     Iterator<Repo> itr = test.iterator();
                     while(itr.hasNext())
                     {
@@ -108,31 +107,37 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            /**
+             * < retrofit2 : POST > - server로 json 보내고, return 받기
+             */
+//
+//            User user = new User("아이디와", "비밀번호"); // 임의의 user obj
+//
+//            Retrofit retrofit = new Retrofit.Builder()
+//                    .baseUrl("http://echo.jsontest.com")
+//                    .addConverterFactory(GsonConverterFactory.create())
+//                    .build();
+//
+//            Login login = retrofit.create(Login.class);
+//            final Call<LoginResult> res = login.login(user.getId(), user.getPw());
+//            //Log.d("git", "현재 res값 : " + res.request());
+//
+//            res.enqueue(new Callback<LoginResult>() {
+//                @Override
+//                public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+//
+//                    LoginResult loginResult = response.body();
+//                    toServer.append(loginResult.getKey());
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<LoginResult> call, Throwable t) {
+//
+//                }
+//            });
 
 
-/*
-            // POST
-            Retrofit retrofit2 = new Retrofit.Builder()
-                    .baseUrl("http://echo.jsontest.com/key/value/one/two")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            GithubServiceSample service2 = retrofit2.create(GithubServiceSample.class);
-            Call<Task> call = service2.createTask(new Task("안녕", "하세요!"));
-
-            call.enqueue(new Callback<Task>() {
-                @Override
-                public void onResponse(Call<Task> call, Response<Task> response)
-                {
-                    Task test = response.body();
-                    Log.i("git", "test2" + test.toString());
-                }
-
-                @Override
-                public void onFailure(Call<Task> call, Throwable t) {
-
-                }
-            });
-*/
 
         }
 
