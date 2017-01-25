@@ -6,17 +6,18 @@ package com.example.kbpark.frontbeaconmonitor.retrofit;
 
 public class LoginResult
 {
-    String id;
-    String pw;
-    String key;
+    String one; // 이 변수명들은 반드시 json의 'key name'이랑 같아야 한다!!!!
+    String key; // 이 변수명들은 반드시 json의 'key name'이랑 같아야 한다!!!!
 
-    public LoginResult(String id, String pw) {
-        this.id = id;
-        this.pw = pw;
+    public String getFirstTest() // method명은 상관 없음
+    {
+        return one;
     }
 
-    public String getKey()
+    public String getSecondTest() // method명은 상관 없음
     {
         return key;
     }
 }
+
+
