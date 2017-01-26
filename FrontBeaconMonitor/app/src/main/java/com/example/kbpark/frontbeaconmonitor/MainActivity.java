@@ -14,6 +14,8 @@ import com.example.kbpark.frontbeaconmonitor.retrofit.LoginResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.GsonConverterFactory;
@@ -76,7 +78,17 @@ public class MainActivity extends AppCompatActivity {
              * < retrofit2 : POST >
              */
 
+            //Here a logging interceptor is created
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            //The logging interceptor will be added to the http client
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            httpClient.addInterceptor(logging);
+
+            // 1.
             Retrofit retrofit = new Retrofit.Builder()
+                    .client(httpClient.build())
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
@@ -85,14 +97,15 @@ public class MainActivity extends AppCompatActivity {
             final Call<LoginResult> res = login.login("pkb", "1234");
             //Log.d("git", "현재 res값 : " + res.request());
 
+            // 2.
             res.enqueue(new Callback<LoginResult>() {
                 @Override
                 public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                     Log.d("test", "통신 성공!");
                     LoginResult loginResult = response.body();
 
-                    Log.d("test", "one~ : " + loginResult.getFirstTest());
-                    Log.d("test", "key~ : " + loginResult.getSecondTest());
+                    // Log.d("test", "one~ : " + loginResult.getFirstTest());
+                    // Log.d("test", "key~ : " + loginResult.getSecondTest());
                 }
 
                 @Override
@@ -100,44 +113,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("test", "통신 실패..");
                 }
             });
-
-            //
-//            /**
-//             *  < retrofit2 : GET >
-//             */
-//
-//            // 1. retrofit obj
-//            Retrofit retrofit = new Retrofit.Builder()
-//                    .baseUrl("https://api.github.com") // server base url
-//                    .addConverterFactory(GsonConverterFactory.create())
-//                    .build();
-//
-//            // 2. service
-//            GithubServiceSample service = retrofit.create(GithubServiceSample.class);
-//            Call<List<Repo>> repos = service.listRepos("uareuni"); // 나머지 url의 일부
-//
-//            // 3. enqueue()
-//            repos.enqueue(new Callback<List<Repo>>() {
-//                @Override
-//                public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
-//                    List<Repo> test = response.body(); // 이렇게 받아오면 됩니다.
-//                    Log.d("git", "호출 성공!");
-//
-//
-//                    Iterator<Repo> itr = test.iterator();
-//                    while(itr.hasNext())
-//                    {
-//                        Log.d("git", "name : " + itr.next().getName());
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<List<Repo>> call, Throwable t) {
-//                    Log.d("git", "호출 실패ㅠㅠ");
-//                }
-//            });
-
-
 
         }
 
