@@ -71,9 +71,39 @@ public class MainActivity extends AppCompatActivity {
         if(isValidEmail(email) && isValidPassword(pass))
         {
             // Validation Completed
-//
+
+            /**
+             * < retrofit2 : POST >
+             */
+
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            Login login = retrofit.create(Login.class);
+            final Call<LoginResult> res = login.login("pkb", "1234");
+            //Log.d("git", "현재 res값 : " + res.request());
+
+            res.enqueue(new Callback<LoginResult>() {
+                @Override
+                public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                    Log.d("test", "통신 성공!");
+                    LoginResult loginResult = response.body();
+
+                    Log.d("test", "one~ : " + loginResult.getFirstTest());
+                    Log.d("test", "key~ : " + loginResult.getSecondTest());
+                }
+
+                @Override
+                public void onFailure(Call<LoginResult> call, Throwable t) {
+                    Log.d("test", "통신 실패..");
+                }
+            });
+
+            //
 //            /**
-//             *  < retrofit2 : GET > - server로부터 json 받아오기
+//             *  < retrofit2 : GET >
 //             */
 //
 //            // 1. retrofit obj
@@ -106,35 +136,6 @@ public class MainActivity extends AppCompatActivity {
 //                    Log.d("git", "호출 실패ㅠㅠ");
 //                }
 //            });
-
-            /**
-             * < retrofit2 : POST > - server로 json 보내고, return 받기
-             */
-
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            Login login = retrofit.create(Login.class);
-            final Call<LoginResult> res = login.login("pkb", "1234");
-            //Log.d("git", "현재 res값 : " + res.request());
-
-            res.enqueue(new Callback<LoginResult>() {
-                @Override
-                public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
-                    Log.d("test", "통신 성공!");
-                    LoginResult loginResult = response.body();
-
-                    Log.d("test", "one~ : " + loginResult.getFirstTest());
-                    Log.d("test", "key~ : " + loginResult.getSecondTest());
-                }
-
-                @Override
-                public void onFailure(Call<LoginResult> call, Throwable t) {
-                    Log.d("test", "통신 실패..");
-                }
-            });
 
 
 

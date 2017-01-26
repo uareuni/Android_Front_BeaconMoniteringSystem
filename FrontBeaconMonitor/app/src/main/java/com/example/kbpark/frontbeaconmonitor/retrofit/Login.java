@@ -11,8 +11,11 @@ import retrofit2.http.POST;
 
 public interface Login
 {
-    String BASE_URL = "http://echo.jsontest.com";
-    String ADDITIONAL_URL = "/key/value/one/two";
+    // String BASE_URL = "http://echo.jsontest.com";
+    // String ADDITIONAL_URL = "/key/value/one/two";
+
+    String BASE_URL = "http://10.0.2.2:8080"; // android에서 localhost에 접근하기 위해서는 10.0.2.2 주소로 접근해야함!!!!!
+    String ADDITIONAL_URL = "/JsonTest/json.php";
 
     @FormUrlEncoded
     @POST(ADDITIONAL_URL)
