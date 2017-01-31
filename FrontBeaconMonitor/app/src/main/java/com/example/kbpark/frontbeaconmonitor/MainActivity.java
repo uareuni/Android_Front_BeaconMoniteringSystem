@@ -78,44 +78,42 @@ public class MainActivity extends AppCompatActivity {
              * < retrofit2 : POST >
              */
 
-            //Here a logging interceptor is created
+            // 1. for loggin (okhttp log)
+                //Here a logging interceptor is created
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-            //The logging interceptor will be added to the http client
+                //The logging interceptor will be added to the http client
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
             httpClient.addInterceptor(logging);
 
-            // 1.
+            // 2. retrofit setting
             Retrofit retrofit = new Retrofit.Builder()
-                    .client(httpClient.build())
+                    .client(httpClient.build()) // okhttp client for logging
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
             Login login = retrofit.create(Login.class);
-            final Call<LoginResult> res = login.login("pkb", "1234");
-            //Log.d("git", "현재 res값 : " + res.request());
+            final Call<LoginResult> res = login.login("pkb", "1234"); // 실제 통신이 이루어지는 곳
 
-            // 2.
+            // 3. 받아온거 뽑아내기
             res.enqueue(new Callback<LoginResult>() {
                 @Override
                 public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
-                    Log.d("test", "통신 성공!");
+                    Log.d("test", "받아오기 성공!");
                     LoginResult loginResult = response.body();
 
-                    // Log.d("test", "one~ : " + loginResult.getFirstTest());
-                    // Log.d("test", "key~ : " + loginResult.getSecondTest());
+                    Log.d("test", "from server : " + loginResult.getLoginResult());
                 }
 
                 @Override
                 public void onFailure(Call<LoginResult> call, Throwable t) {
-                    Log.d("test", "통신 실패..");
+                    Log.d("test", "받아오기 실패..");
                 }
             });
 
         }
-
     }
 
     /**

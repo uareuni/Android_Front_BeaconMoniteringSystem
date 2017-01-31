@@ -14,12 +14,12 @@ public interface Login
     // String BASE_URL = "http://echo.jsontest.com";
     // String ADDITIONAL_URL = "/key/value/one/two";
 
-    String BASE_URL = "http://10.0.2.2:8080"; // android에서 localhost에 접근하기 위해서는 10.0.2.2 주소로 접근해야함!!!!!
-    String ADDITIONAL_URL = "/JsonTest/json.php";
+    String BASE_URL = "http://10.0.2.2:4903"; // android에서 localhost에 접근하기 위해서는 10.0.2.2 주소로 접근해야함!!!!!
+    String ADDITIONAL_URL = "/login.js";
 
     @FormUrlEncoded
     @POST(ADDITIONAL_URL)
-    Call<LoginResult> login(@Field("user_id") String id,  // 얘네는 server에서 받을 data들.
+    Call<LoginResult> login(@Field("user_id") String id,  // 얘네는 server에서 받을 data들. (server에서 받을때는 'request.body.user_id'로!)
                             @Field("user_pw") String pw); // 얘네는 server에서 받을 data들.
 
 
