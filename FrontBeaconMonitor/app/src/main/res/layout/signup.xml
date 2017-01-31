@@ -221,12 +221,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="resister"
-            android:id="@+id/resister_btn"
+            android:text="register"
+            android:id="@+id/register_btn"
             android:background="@drawable/selector_xml_btn_yellow"
             android:layout_gravity="center_horizontal"
-            android:elevation="0dp"
-            android:onClick="onResisterClicked" />
+            android:elevation="0dp" />
 
     </LinearLayout>
 </LinearLayout>
