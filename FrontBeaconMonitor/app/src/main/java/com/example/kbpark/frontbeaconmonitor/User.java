@@ -94,7 +94,6 @@ public class User
             e.printStackTrace();
         }
 
-
 /*
         // 3. 받아온거 뽑아내기 (비동기)
         res.enqueue(new Callback<LoginResult>() {
