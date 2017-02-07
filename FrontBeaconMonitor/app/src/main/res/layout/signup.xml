@@ -50,7 +50,8 @@
                 android:background="@null"
                 android:selectAllOnFocus="false"
                 android:layout_alignBottom="@+id/icon_email"
-                android:layout_alignTop="@+id/icon_email" />
+                android:layout_alignTop="@+id/icon_email"
+                tools:text="pkb@pkb.pkb" />
 
             <ImageView
                 android:id="@+id/icon_email"
@@ -88,7 +89,8 @@
                 android:selectAllOnFocus="false"
                 android:layout_alignBottom="@+id/icon_password"
                 android:layout_alignTop="@+id/icon_password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                tools:text="123456" />
 
             <ImageView
                 android:id="@+id/icon_password"
@@ -126,7 +128,8 @@
                 android:selectAllOnFocus="false"
                 android:layout_alignBottom="@+id/icon_birth"
                 android:layout_alignTop="@+id/icon_birth"
-                android:inputType="numberSigned" />
+                android:inputType="numberSigned"
+                tools:text="920324" />
 
             <ImageView
                 android:id="@+id/icon_birth"
@@ -164,7 +167,8 @@
                 android:selectAllOnFocus="false"
                 android:layout_alignBottom="@+id/icon_home"
                 android:layout_alignTop="@+id/icon_home"
-                android:hint="address" />
+                android:hint="address"
+                tools:text="pohang" />
 
             <ImageView
                 android:id="@+id/icon_home"
@@ -202,7 +206,8 @@
                 android:selectAllOnFocus="false"
                 android:layout_alignBottom="@+id/icon_phone"
                 android:layout_alignTop="@+id/icon_phone"
-                android:hint="phone number" />
+                android:hint="phone number"
+                tools:text="010-0000-0000" />
 
             <ImageView
                 android:id="@+id/icon_phone"
