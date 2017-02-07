@@ -15,8 +15,6 @@ import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.BASE_URL;
-import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_FAILURE;
-import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_FAILURE;
 
 /**
  * Created by KBPark on 2017. 1. 31..
@@ -74,14 +72,12 @@ public class User
             @Override
             public void run()
             {
-                try
-                {
+                try {
                     //Log.i("LOG", "log2 : " + loginRes);
                     loginRes = res.execute().body().getLoginResult();
                     //Log.i("LOG", "log3 : " + loginRes);
 
                 } catch(IOException ie) {
-                    loginRes = LOGIN_FAILURE;
                     ie.printStackTrace();
                 }
             }
@@ -139,7 +135,6 @@ public class User
                     registerRes = res.execute().body().getRegisterResult();
                 } catch (IOException ie)
                 {
-                    registerRes = REGISTER_FAILURE;
                     ie.printStackTrace();
                 }
             }
