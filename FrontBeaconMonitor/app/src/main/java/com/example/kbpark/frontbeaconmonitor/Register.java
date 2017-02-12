@@ -2,16 +2,12 @@ package com.example.kbpark.frontbeaconmonitor;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_FAILURE;
-import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_SUCCESS;
 
 /**
  * Created by KBPark on 2017. 1. 15..
@@ -52,16 +48,16 @@ public class Register extends AppCompatActivity
             User user = new User(email, pw, birth, address, phone);
             String registerRes = user.register(); // 실제 register가 일어나는 부분
 
-            if(registerRes == null)
-            {
-                Log.d("TEST", "Register 통신 실패....");
-            } else if (user.register().equals(REGISTER_SUCCESS))
-            {
-                Log.d("TEST", "Register 성공!");
-            } else if (user.register().equals(REGISTER_FAILURE))
-            {
-                Log.d("TEST", "Register 실패.. ");
-            }
+//            if(registerRes == null)
+//            {
+//                Log.d("TEST", "Register 통신 실패....");
+//            } else if (user.register().equals(REGISTER_SUCCESS))
+//            {
+//                Log.d("TEST", "Register 성공!");
+//            } else if (user.register().equals(REGISTER_FAILURE))
+//            {
+//                Log.d("TEST", "Register 실패.. ");
+//            }
         }
         // check the empty values!
     }

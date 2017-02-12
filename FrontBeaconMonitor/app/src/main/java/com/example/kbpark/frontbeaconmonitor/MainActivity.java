@@ -3,7 +3,6 @@ package com.example.kbpark.frontbeaconmonitor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.EditText;
 
 import java.util.regex.Matcher;
@@ -13,8 +12,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_FAILURE;
-import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_SUCCESS;
 import static com.example.kbpark.frontbeaconmonitor.Cons.MIN_PASSWORD;
 
 /**
@@ -60,18 +57,6 @@ public class MainActivity extends AppCompatActivity {
             // Validation Completed
             User user = new User(email, pass);
             String loginRes = user.login(); // 실제로 login이 일어나는 부분
-
-            if(loginRes == null)
-            {
-                Log.i("TEST", "Login 통신 실패.... " + "user.login()값 : " + loginRes);
-            } else if(loginRes.equals(LOGIN_SUCCESS))
-            {
-                Log.i("TEST", "Login 성공! " + "loginRes값 : " + loginRes);
-            } else if(loginRes.equals(LOGIN_FAILURE))
-            {
-                Log.i("TEST", "Login 실패.. " + "loginRes값 : " + loginRes);
-            }
-
         }
 
     }
