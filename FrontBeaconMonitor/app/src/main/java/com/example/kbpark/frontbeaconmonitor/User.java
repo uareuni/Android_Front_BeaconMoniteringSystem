@@ -16,7 +16,10 @@ import retrofit2.Retrofit;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.BASE_URL;
 import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_FAILURE;
+import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_QUERY_ERROR;
 import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_SUCCESS;
+import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_FAILURE;
+import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_SUCCESS;
 
 /**
  * Created by KBPark on 2017. 1. 31..
@@ -65,46 +68,29 @@ public class User
         ServiceApi serviceApi = retrofit.create(ServiceApi.class);
         final Call<LoginResult> res = serviceApi.login(id, pw); // login (실제 통신이 이루어지는 곳)
 
-//        // 3. 받아온거 뽑아내기 (비동기)
-//        res.enqueue(new Callback<LoginResult>() {
-//            @Override
-//            public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
-//                Log.d("LOG", "서버통신 성공!(받아오기)");
-//                loginRes = response.body().getLoginResult();
-//                Log.i("LOG", "성공 : " + loginRes);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<LoginResult> call, Throwable t) {
-//                Log.d("LOG", "서버통신 실패..");
-//
-//            }
-//        });
-//
-//        Log.i("LOG", "log4 : " + loginRes);
-
-
-
         // 3. 받아온거 뽑아내기 (동기)
+
         new Thread(new Runnable()
         {
             @Override
             public void run()
             {
-                try
-                {
-                    loginRes = res.execute().body().getLoginResult(); // 여기서 error 남.
+                try {
+                    loginRes = res.execute().body().getLoginResult();
 
-                        if(loginRes == null)
-                        {
-                            Log.i("TEST", "Login 통신 실패.... " + "user.login()값 : " + loginRes);
-                        } else if(loginRes.equals(LOGIN_SUCCESS))
-                        {
+                    // test log
+                    if(loginRes != null)
+                    {
+                        if (loginRes.equals(LOGIN_QUERY_ERROR)) {
+                            Log.i("TEST", "Login query error.. " + "loginRes값 : " + loginRes);
+                        } else if (loginRes.equals(LOGIN_SUCCESS)) {
                             Log.i("TEST", "Login 성공! " + "loginRes값 : " + loginRes);
-                        } else if(loginRes.equals(LOGIN_FAILURE))
-                        {
-                            Log.i("TEST", "Login 실패.. " + "loginRes값 : " + loginRes);
+                        } else if (loginRes.equals(LOGIN_FAILURE)) {
+                            Log.i("TEST", "중복된 아이디.. " + "loginRes값 : " + loginRes);
                         }
+                    } else {
+                        Log.i("TEST", "Login 실패.. ");
+                    }
 
                 } catch(IOException ie) {
                     ie.printStackTrace();
@@ -112,6 +98,30 @@ public class User
             }
         }).start();
 
+/*
+        // 3. 받아온거 뽑아내기 (비동기)
+        res.enqueue(new Callback<LoginResult>() {
+            @Override
+            public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                    Log.d("LOGIN", "서버통신 성공!(받아오기)");
+                loginRes = response.body().getLoginResult();
+            }
+
+            @Override
+            public void onFailure(Call<LoginResult> call, Throwable t) {
+
+                Log.i("LOG", "log2 : " + loginRes);
+
+                    Log.d("LOGIN", "서버통신 실패..");
+                //loginRes = LOGIN_FAILURE;
+                loginRes = LOGIN_SUCCESS; // 조작
+
+                Log.i("LOG", "log3 : " + loginRes);
+            }
+        });
+
+        Log.i("LOG", "log4" + loginRes);
+*/
         return loginRes;
     }
 
@@ -128,9 +138,22 @@ public class User
             @Override
             public void run()
             {
-                try
-                {
+                try {
                     registerRes = res.execute().body().getRegisterResult();
+
+                    // test log
+                    if(registerRes == null)
+                    {
+                        Log.d("TEST", "Register 통신 실패....");
+                    } else if (registerRes.equals(REGISTER_SUCCESS))
+                    {
+                        Log.d("TEST", "Register 성공!");
+                    } else if (registerRes.equals(REGISTER_FAILURE))
+                    {
+                        Log.d("TEST", "Register 실패.. ");
+                    }
+
+
                 } catch (IOException ie)
                 {
                     ie.printStackTrace();
@@ -138,12 +161,7 @@ public class User
             }
         }).start();
 
-        // for 쓰레드가 도는 시간을 벌어주기 위함 (동기식으로 처리하기 위해 일부러 지연시킴)
-        try {
-            Thread.sleep(1000);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+
 
 /*
         // 3. 받아온거 뽑아내기 (비동기)
@@ -167,11 +185,9 @@ public class User
 
     private void retrofitInit()
     {
-        /**
-         * < retrofit2 : POST >
-         */
+        /** < retrofit2 : POST > **/
 
-        // 1. for loggin (okhttp log)
+        // 1. for logging (okhttp log)
         //Here a logging interceptor is created
         logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);

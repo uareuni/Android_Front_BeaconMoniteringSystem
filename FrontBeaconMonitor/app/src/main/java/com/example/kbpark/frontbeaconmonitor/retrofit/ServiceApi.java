@@ -26,7 +26,7 @@ public interface ServiceApi
                                   @Field("res_birth") String res_birth,
                                   @Field("res_address") String res_address,
                                   @Field("res_phone") String res_phone
-                                  );
+    );
 
     // cf) GET 방식 sample
     /*
