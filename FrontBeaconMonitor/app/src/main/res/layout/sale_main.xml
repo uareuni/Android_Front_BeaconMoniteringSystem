@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/app_title"
+        android:background="#19A8DE"
+        android:text="android side"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@android:color/background_light"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:hapticFeedbackEnabled="true"
+        android:gravity="bottom"
+        android:rowCount="3"
+        android:columnCount="2"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <Button android:text="1" />
+        <Button android:text="2" />
+        <Button android:text="3" />
+        <Button android:text="4" />
+        <Button android:text="5" />
+        <Button android:text="6" />
+
+    </GridLayout>
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#EBEBEB"
+        android:layout_weight="1"
+        >
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Left" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right" />
+    </android.support.design.widget.TabLayout>
+
+
+</LinearLayout>

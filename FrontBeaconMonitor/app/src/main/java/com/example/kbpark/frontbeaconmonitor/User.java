@@ -65,6 +65,7 @@ public class User
      */
     public String login()
     {
+
         ServiceApi serviceApi = retrofit.create(ServiceApi.class);
         final Call<LoginResult> res = serviceApi.login(id, pw); // login (실제 통신이 이루어지는 곳)
 
@@ -99,6 +100,7 @@ public class User
         }).start();
 
 /*
+
         // 3. 받아온거 뽑아내기 (비동기)
         res.enqueue(new Callback<LoginResult>() {
             @Override
@@ -109,18 +111,12 @@ public class User
 
             @Override
             public void onFailure(Call<LoginResult> call, Throwable t) {
-
-                Log.i("LOG", "log2 : " + loginRes);
-
                     Log.d("LOGIN", "서버통신 실패..");
                 //loginRes = LOGIN_FAILURE;
                 loginRes = LOGIN_SUCCESS; // 조작
-
-                Log.i("LOG", "log3 : " + loginRes);
             }
         });
 
-        Log.i("LOG", "log4" + loginRes);
 */
         return loginRes;
     }
@@ -202,6 +198,8 @@ public class User
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+
     }
 
 

@@ -27,10 +27,14 @@ public interface ServiceApi
                                   @Field("res_address") String res_address,
                                   @Field("res_phone") String res_phone
     );
+}
 
-    // cf) GET 방식 sample
+
+
+
+
+// cf) GET 방식 sample
     /*
         @GET("/users/{user}/repos")
         Call<List<Repo>> listRepos(@Path("user") String user);
      */
-}

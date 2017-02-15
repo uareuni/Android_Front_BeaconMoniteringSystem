@@ -3,234 +3,253 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_green_dark">
+    android:background="#EBEBEB">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@android:color/holo_green_dark"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
-        android:weightSum="1">
+        android:id="@+id/app_title"
+        android:background="#19A8DE"
+        android:text="android side"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@android:color/background_light"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-        <TextView
-            android:text="Create your account"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11">
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:textColor="@android:color/background_light"
-            android:layout_marginBottom="10dp"
-            android:textStyle="normal|bold" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
+            android:weightSum="1">
 
-        <!-- ID(email) -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.01"
-            android:background="@android:color/white"
-            android:layout_marginTop="30dp"
-            android:gravity="center">
-
-            <EditText
+            <TextView
+                android:text="Create your account"
                 android:layout_width="match_parent"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/email_input"
-                android:hint="ID (email)"
-                android:singleLine="true"
-                android:layout_weight="0.05"
-                android:paddingLeft="10dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon_email"
-                android:background="@null"
-                android:selectAllOnFocus="false"
-                android:layout_alignBottom="@+id/icon_email"
-                android:layout_alignTop="@+id/icon_email"
-                android:text="pkb@pkb.pkb" />
+                android:id="@+id/textView"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textColor="#646464"
+                android:layout_marginBottom="10dp"
+                android:textStyle="normal|bold" />
 
-            <ImageView
-                android:id="@+id/icon_email"
-                android:src="@mipmap/icon_email"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:padding="5dp"
-                android:layout_marginLeft="3dp" />
-        </RelativeLayout>
-
-
-        <!-- Password -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.01"
-            android:background="@android:color/white"
-            android:layout_marginTop="15dp"
-            android:gravity="center">
-
-            <EditText
+            <!-- ID(email) -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:ems="10"
-                android:id="@+id/password_input"
-                android:hint="password"
-                android:singleLine="true"
-                android:layout_weight="0.05"
-                android:paddingLeft="10dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon_password"
-                android:background="@null"
-                android:selectAllOnFocus="false"
-                android:layout_alignBottom="@+id/icon_password"
-                android:layout_alignTop="@+id/icon_password"
-                android:inputType="textPassword"
-                android:text="123456" />
+                android:layout_weight="0.01"
+                android:background="@android:color/white"
+                android:layout_marginTop="25dp"
+                android:gravity="center">
 
-            <ImageView
-                android:id="@+id/icon_password"
-                android:src="@mipmap/icon_password"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:padding="5dp"
-                android:layout_marginLeft="3dp" />
-        </RelativeLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/email_input"
+                    android:hint="ID (email)"
+                    android:singleLine="true"
+                    android:layout_weight="0.05"
+                    android:paddingLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/icon_email"
+                    android:background="@null"
+                    android:selectAllOnFocus="false"
+                    android:layout_alignBottom="@+id/icon_email"
+                    android:layout_alignTop="@+id/icon_email"
+                    android:text="pkb@pkb.pkb" />
+
+                <ImageView
+                    android:id="@+id/icon_email"
+                    android:src="@mipmap/icon_email"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="5dp"
+                    android:layout_marginLeft="3dp" />
+            </RelativeLayout>
 
 
-        <!-- Birth -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.01"
-            android:background="@android:color/white"
-            android:layout_marginTop="15dp"
-            android:gravity="center">
-
-            <EditText
+            <!-- Password -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:ems="10"
-                android:id="@+id/birth_input"
-                android:hint="birth"
-                android:singleLine="true"
-                android:layout_weight="0.05"
-                android:paddingLeft="10dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon_birth"
-                android:background="@null"
-                android:selectAllOnFocus="false"
-                android:layout_alignBottom="@+id/icon_birth"
-                android:layout_alignTop="@+id/icon_birth"
-                android:inputType="numberSigned"
-                android:text="920324" />
+                android:layout_weight="0.01"
+                android:background="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:gravity="center">
 
-            <ImageView
-                android:id="@+id/icon_birth"
-                android:src="@mipmap/icon_birth"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:padding="5dp"
-                android:layout_marginLeft="3dp" />
-        </RelativeLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:ems="10"
+                    android:id="@+id/password_input"
+                    android:hint="password"
+                    android:singleLine="true"
+                    android:layout_weight="0.05"
+                    android:paddingLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/icon_password"
+                    android:background="@null"
+                    android:selectAllOnFocus="false"
+                    android:layout_alignBottom="@+id/icon_password"
+                    android:layout_alignTop="@+id/icon_password"
+                    android:inputType="textPassword"
+                    android:text="123456" />
+
+                <ImageView
+                    android:id="@+id/icon_password"
+                    android:src="@mipmap/icon_password"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="5dp"
+                    android:layout_marginLeft="3dp" />
+            </RelativeLayout>
 
 
-        <!-- home address -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.01"
-            android:background="@android:color/white"
-            android:layout_marginTop="15dp"
-            android:gravity="center">
-
-            <EditText
+            <!-- Birth -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:inputType="textPostalAddress"
-                android:ems="10"
-                android:id="@+id/address_input"
-                android:singleLine="true"
-                android:layout_weight="0.05"
-                android:paddingLeft="10dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon_home"
-                android:background="@null"
-                android:selectAllOnFocus="false"
-                android:layout_alignBottom="@+id/icon_home"
-                android:layout_alignTop="@+id/icon_home"
-                android:hint="address"
-                android:text="pohang" />
+                android:layout_weight="0.01"
+                android:background="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:gravity="center">
 
-            <ImageView
-                android:id="@+id/icon_home"
-                android:src="@mipmap/icon_home"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:padding="5dp"
-                android:layout_marginLeft="3dp" />
-        </RelativeLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:ems="10"
+                    android:id="@+id/birth_input"
+                    android:hint="birth"
+                    android:singleLine="true"
+                    android:layout_weight="0.05"
+                    android:paddingLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/icon_birth"
+                    android:background="@null"
+                    android:selectAllOnFocus="false"
+                    android:layout_alignBottom="@+id/icon_birth"
+                    android:layout_alignTop="@+id/icon_birth"
+                    android:inputType="numberSigned"
+                    android:text="920324" />
+
+                <ImageView
+                    android:id="@+id/icon_birth"
+                    android:src="@mipmap/icon_birth"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="5dp"
+                    android:layout_marginLeft="3dp" />
+            </RelativeLayout>
 
 
-        <!-- phone number -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.01"
-            android:background="@android:color/white"
-            android:layout_marginTop="15dp"
-            android:gravity="center">
-
-            <EditText
+            <!-- home address -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:inputType="textPersonName|phone"
-                android:ems="10"
-                android:id="@+id/phone_input"
-                android:singleLine="true"
-                android:layout_weight="0.05"
-                android:paddingLeft="10dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon_phone"
-                android:background="@null"
-                android:selectAllOnFocus="false"
-                android:layout_alignBottom="@+id/icon_phone"
-                android:layout_alignTop="@+id/icon_phone"
-                android:hint="phone number"
-                android:text="010-0000-0000" />
+                android:layout_weight="0.01"
+                android:background="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:gravity="center">
 
-            <ImageView
-                android:id="@+id/icon_phone"
-                android:src="@mipmap/icon_phone"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:padding="5dp"
-                android:layout_marginLeft="3dp" />
-        </RelativeLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:inputType="textPostalAddress"
+                    android:ems="10"
+                    android:id="@+id/address_input"
+                    android:singleLine="true"
+                    android:layout_weight="0.05"
+                    android:paddingLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/icon_home"
+                    android:background="@null"
+                    android:selectAllOnFocus="false"
+                    android:layout_alignBottom="@+id/icon_home"
+                    android:layout_alignTop="@+id/icon_home"
+                    android:hint="address"
+                    android:text="pohang" />
+
+                <ImageView
+                    android:id="@+id/icon_home"
+                    android:src="@mipmap/icon_home"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="5dp"
+                    android:layout_marginLeft="3dp" />
+            </RelativeLayout>
 
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="register"
-            android:id="@+id/register_btn"
-            android:background="@drawable/selector_xml_btn_yellow"
-            android:layout_gravity="center_horizontal"
-            android:elevation="0dp" />
+            <!-- phone number -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.01"
+                android:background="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:gravity="center">
 
-    </LinearLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:inputType="textPersonName|phone"
+                    android:ems="10"
+                    android:id="@+id/phone_input"
+                    android:singleLine="true"
+                    android:layout_weight="0.05"
+                    android:paddingLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/icon_phone"
+                    android:background="@null"
+                    android:selectAllOnFocus="false"
+                    android:layout_alignBottom="@+id/icon_phone"
+                    android:layout_alignTop="@+id/icon_phone"
+                    android:hint="phone number"
+                    android:text="010-0000-0000" />
+
+                <ImageView
+                    android:id="@+id/icon_phone"
+                    android:src="@mipmap/icon_phone"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="5dp"
+                    android:layout_marginLeft="3dp" />
+            </RelativeLayout>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="register"
+                android:id="@+id/register_btn"
+                android:background="@drawable/selector_xml_btn_yellow"
+                android:layout_gravity="center_horizontal"
+                android:elevation="0dp"
+                android:textColor="#646464" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
 </LinearLayout>
