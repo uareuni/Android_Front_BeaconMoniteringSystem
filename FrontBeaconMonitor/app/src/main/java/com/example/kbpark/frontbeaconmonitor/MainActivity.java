@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
                     String loginRes = user.login(); // 실제로 login이 일어나는 부분
              */
 
-            startActivity(new Intent(getApplicationContext(), SaleMain.class));
+            Intent saleIntent = new Intent(getApplicationContext(), SaleMain.class);
+            startActivity(saleIntent);
         }
 
     }
