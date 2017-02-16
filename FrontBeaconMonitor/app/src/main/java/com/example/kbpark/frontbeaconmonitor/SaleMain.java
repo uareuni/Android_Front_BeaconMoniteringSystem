@@ -14,7 +14,7 @@ public class SaleMain extends AppCompatActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sale_list);
+        setContentView(R.layout.sale_main);
         ButterKnife.bind(this);
     }
 
