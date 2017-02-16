@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="grid_btn_padding"> 5dp </dimen> <!-- O -->
+    <dimen name="grid_btn_padding"> 5dp </dimen>
 </resources>
 
 
