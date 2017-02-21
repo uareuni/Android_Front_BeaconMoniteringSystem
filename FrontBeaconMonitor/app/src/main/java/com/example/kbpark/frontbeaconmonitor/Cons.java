@@ -19,6 +19,9 @@ public class Cons
     public static final String REGISTER_FAILURE = "400";
 
     public static final int MIN_PASSWORD = 4;
+
+    public static final String FIRST_TITLE_NAME = "할인상품 목록";
+    public static final String SECOND_TITLE_NAME = "쿠폰 목록";
 }
 
 

@@ -19,7 +19,7 @@
         </activity>
 
         <activity android:name=".Register" />
-        <activity android:name=".SaleMain" />
+        <activity android:name=".LoginMain" />
     </application>
 
 </manifest>

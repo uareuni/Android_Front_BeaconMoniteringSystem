@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:id="@+id/app_title"
-        android:background="#19A8DE"
-        android:text="android side"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:textColor="@android:color/background_light"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="11">
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:weightSum="1"
+        android:layout_marginTop="20dp">
 
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="0.88"
+            android:layout_above="@+id/btn_get_coupon"
+            android:layout_alignParentTop="true"
+            android:id="@+id/listview_coupon" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="쿠폰 받기"
+            android:id="@+id/btn_get_coupon"
+            android:background="@drawable/selector_xml_btn_yellow"
+            android:layout_gravity="center_horizontal"
+            android:elevation="0dp"
+            android:textColor="#646464"
+            android:layout_marginBottom="52dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp" />
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     void onRegisterClicked()
     {
         Intent intent = new Intent(getApplicationContext(), Register.class); // to Register
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
 
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     String loginRes = user.login(); // 실제로 login이 일어나는 부분
              */
 
-            Intent saleIntent = new Intent(getApplicationContext(), SaleMain.class);
+            Intent saleIntent = new Intent(getApplicationContext(), LoginMain.class);
             startActivity(saleIntent);
         }
 

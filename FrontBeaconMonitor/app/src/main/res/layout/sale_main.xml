@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:id="@+id/app_title"
-        android:background="#19A8DE"
-        android:text="android side"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:textColor="@android:color/background_light"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/sale_container">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:layout_width="0dp"
@@ -38,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                     />
+                    android:id="@+id/btn_fruits" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -125,6 +117,12 @@
                     android:layout_weight="1"
                     android:text="세제 / 제지 / 일회용품" />
 
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </FrameLayout>
+
 
             </RelativeLayout>
 
@@ -132,23 +130,4 @@
 
     </LinearLayout>
 
-    <android.support.design.widget.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#EBEBEB"
-        android:layout_weight="1"
-        >
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="할인상품 목록" />
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="쿠폰" />
-    </android.support.design.widget.TabLayout>
-
-
-</LinearLayout>
+</FrameLayout>
