@@ -93,7 +93,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_marginTop="50dp"
                 android:text="Sign In"
-                android:id="@+id/login_btn"
+                android:id="@+id/btn_login"
                 android:background="@drawable/selector_xml_btn_yellow"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#646464" />
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Click here for 'register'"
-                android:id="@+id/register_click_btn"
+                android:id="@+id/btn_register"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:textColor="#19A8DE"

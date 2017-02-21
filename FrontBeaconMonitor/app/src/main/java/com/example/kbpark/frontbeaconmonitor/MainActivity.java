@@ -30,15 +30,14 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.register_click_btn)
+    @OnClick(R.id.btn_register)
     void onRegisterClicked()
     {
         Intent intent = new Intent(getApplicationContext(), Register.class); // to Register
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
 
-    @OnClick(R.id.login_btn)
+    @OnClick(R.id.btn_login)
     void onSignUpClicked()
     {
         final String email = login_email.getText().toString();
@@ -61,8 +60,9 @@ public class MainActivity extends AppCompatActivity {
                     String loginRes = user.login(); // 실제로 login이 일어나는 부분
              */
 
-            Intent saleIntent = new Intent(getApplicationContext(), LoginMain.class);
-            startActivity(saleIntent);
+            Intent intent = new Intent(getApplicationContext(), LoginMain.class);
+            // intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
         }
 
     }
