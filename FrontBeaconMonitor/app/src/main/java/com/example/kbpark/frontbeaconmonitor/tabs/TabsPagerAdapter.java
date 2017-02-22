@@ -48,4 +48,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter
             return SECOND_TITLE_NAME;
         }
     }
+
+
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="60dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/coupon_image"
+        android:layout_height="60dp"
+        android:layout_margin="10dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp">
+
+        <TextView
+            android:text="title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/coupon_title"
+            android:layout_marginBottom="2dp"
+            android:textSize="25dp" />
+
+        <TextView
+            android:text="description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/coupon_description"
+            android:paddingLeft="5dp"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
