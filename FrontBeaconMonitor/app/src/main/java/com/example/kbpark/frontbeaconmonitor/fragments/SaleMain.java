@@ -45,8 +45,6 @@ public class SaleMain extends Fragment implements View.OnClickListener, LoginMai
     @Override
     public void onBackKey()
     {
-        Toast.makeText(getContext(), "SaleMain back key clicked", Toast.LENGTH_SHORT).show();
-
         // back key 다시 원상복구 시켜놓기!
         LoginMain activity = (LoginMain) getActivity();
         activity.setOnKeyBackPressedListener(null);

@@ -40,7 +40,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter
     @Override
     public CharSequence getPageTitle(int position)
     {
-        if(position == 1)
+        if(position == 0)
         {
             return FIRST_TITLE_NAME;
         } else

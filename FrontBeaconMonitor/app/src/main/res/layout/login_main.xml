@@ -57,12 +57,19 @@
 
     </RelativeLayout>
 
-    <com.example.kbpark.frontbeaconmonitor.tabs.CustomViewPager
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:id="@+id/pager" />
+        android:id="@+id/contaner">
 
+        <com.example.kbpark.frontbeaconmonitor.tabs.CustomViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:id="@+id/pager" />
+    </FrameLayout>
 
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"

@@ -2,8 +2,13 @@ package com.example.kbpark.frontbeaconmonitor;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.kbpark.frontbeaconmonitor.fragments.CouponCart;
 import com.example.kbpark.frontbeaconmonitor.tabs.CustomViewPager;
 import com.example.kbpark.frontbeaconmonitor.tabs.TabsPagerAdapter;
 
@@ -11,20 +16,34 @@ import com.example.kbpark.frontbeaconmonitor.tabs.TabsPagerAdapter;
  * Created by KBPark on 2017. 2. 16..
  */
 
-public class LoginMain extends AppCompatActivity
-{
+public class LoginMain extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
 
+        Button cartBtn = (Button) findViewById(R.id.btn_coupon_cart);
+        cartBtn.setOnClickListener(this);
+
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         CustomViewPager pager = (CustomViewPager) findViewById(R.id.pager);
+
         pager.setPagingEnabled(false); // page touch sliding disabled
         TabsPagerAdapter adapter = new TabsPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
         tabs.setupWithViewPager(pager);
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        Toast.makeText(getApplicationContext(), "cart clicked!", Toast.LENGTH_SHORT).show();
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction()
+                .add(R.id.contaner, new CouponCart())
+                .commit();
     }
 
 

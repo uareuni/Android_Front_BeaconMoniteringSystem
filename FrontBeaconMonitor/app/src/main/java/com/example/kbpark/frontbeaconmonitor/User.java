@@ -31,7 +31,6 @@ public class User
     HttpLoggingInterceptor logging;
     Retrofit retrofit;
 
-
     String loginRes;
     String registerRes;
 
