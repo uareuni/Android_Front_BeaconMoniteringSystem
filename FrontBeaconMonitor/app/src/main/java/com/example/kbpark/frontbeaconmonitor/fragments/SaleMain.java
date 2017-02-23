@@ -12,7 +12,8 @@ import android.widget.Toast;
 import com.example.kbpark.frontbeaconmonitor.LoginMain;
 import com.example.kbpark.frontbeaconmonitor.R;
 
-import static com.example.kbpark.frontbeaconmonitor.LoginMain.saleTabCurListener;
+import static com.example.kbpark.frontbeaconmonitor.LoginMain.curTabListener;
+import static com.example.kbpark.frontbeaconmonitor.LoginMain.saleCurTabListener;
 
 /**
  * Created by KBPark on 2017. 2. 21..
@@ -47,8 +48,11 @@ public class SaleMain extends Fragment implements View.OnClickListener, LoginMai
     {
         // back key 다시 원상복구 시켜놓기!
         LoginMain activity = (LoginMain) getActivity();
-        activity.setOnKeyBackPressedListener(null);
-        activity.onBackPressed();
+        if(activity != null)
+        {
+            activity.setOnKeyBackPressedListener(null);
+            activity.onBackPressed();
+        }
     }
 
     @Override
@@ -56,7 +60,7 @@ public class SaleMain extends Fragment implements View.OnClickListener, LoginMai
     {
         super.onAttach(context);
         ((LoginMain) context).setOnKeyBackPressedListener(this);
-        saleTabCurListener = this;
+        saleCurTabListener = this;
     }
 
     // 참고로, 지금 내 경우는 SaleMain이랑 CouponMain에 있는 layout에다가 fragment들을 붙이고 있는 상황이라
@@ -70,7 +74,9 @@ public class SaleMain extends Fragment implements View.OnClickListener, LoginMai
             // listener setting
             if(getContext()!=null)
             {
-                ((LoginMain) getContext()).setOnKeyBackPressedListener(saleTabCurListener);
+                Toast.makeText(getContext(), "sale set listener", Toast.LENGTH_SHORT).show();
+                ((LoginMain) getContext()).setOnKeyBackPressedListener(saleCurTabListener);
+                curTabListener = this;
             }
         }
         super.setUserVisibleHint(isVisibleToUser);

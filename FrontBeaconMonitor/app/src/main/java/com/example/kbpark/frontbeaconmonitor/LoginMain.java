@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.kbpark.frontbeaconmonitor.fragments.CouponCart;
 import com.example.kbpark.frontbeaconmonitor.tabs.CustomViewPager;
@@ -16,7 +15,8 @@ import com.example.kbpark.frontbeaconmonitor.tabs.TabsPagerAdapter;
  * Created by KBPark on 2017. 2. 16..
  */
 
-public class LoginMain extends AppCompatActivity implements View.OnClickListener {
+public class LoginMain extends AppCompatActivity implements View.OnClickListener
+{
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -38,11 +38,9 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v)
     {
-        Toast.makeText(getApplicationContext(), "cart clicked!", Toast.LENGTH_SHORT).show();
-
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction()
-                .add(R.id.contaner, new CouponCart())
+                .replace(R.id.contaner, new CouponCart())
                 .commit();
     }
 
@@ -53,8 +51,9 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
     }
 
     private onKeyBackPressedListener mOnKeyBackPressedListener;
-    public static onKeyBackPressedListener saleTabCurListener;
-    public static onKeyBackPressedListener couponTabCurListener;
+    public static onKeyBackPressedListener saleCurTabListener;
+    public static onKeyBackPressedListener couponCurTabListener;
+    public static onKeyBackPressedListener curTabListener; // for cart fragment detach
 
     public void setOnKeyBackPressedListener(onKeyBackPressedListener listener)
     {
