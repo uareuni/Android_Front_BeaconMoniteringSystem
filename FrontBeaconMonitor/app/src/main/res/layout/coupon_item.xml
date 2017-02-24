@@ -6,11 +6,11 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="60dp"
         app:srcCompat="@mipmap/ic_launcher"
         android:id="@+id/coupon_image"
-        android:layout_height="60dp"
-        android:layout_margin="10dp" />
+        android:layout_margin="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/coupon_title"
             android:layout_marginBottom="2dp"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:text="description"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/coupon_description"
             android:paddingLeft="5dp"
-            android:textSize="18dp" />
+            android:textSize="15dp" />
 
     </LinearLayout>
 

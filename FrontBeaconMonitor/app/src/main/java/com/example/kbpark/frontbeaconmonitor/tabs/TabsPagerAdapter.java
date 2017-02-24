@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.kbpark.frontbeaconmonitor.fragments.CouponMain;
-import com.example.kbpark.frontbeaconmonitor.fragments.SaleMain;
+import com.example.kbpark.frontbeaconmonitor.Coupon.CouponMain;
+import com.example.kbpark.frontbeaconmonitor.Sale.SaleMain;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.FIRST_TITLE_NAME;
 import static com.example.kbpark.frontbeaconmonitor.Cons.SECOND_TITLE_NAME;

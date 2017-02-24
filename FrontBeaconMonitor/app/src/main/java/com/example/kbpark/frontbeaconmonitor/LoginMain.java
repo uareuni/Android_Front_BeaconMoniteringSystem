@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.kbpark.frontbeaconmonitor.fragments.CouponCart;
+import com.example.kbpark.frontbeaconmonitor.Coupon.CouponCart;
 import com.example.kbpark.frontbeaconmonitor.tabs.CustomViewPager;
 import com.example.kbpark.frontbeaconmonitor.tabs.TabsPagerAdapter;
 

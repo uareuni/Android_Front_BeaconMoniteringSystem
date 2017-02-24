@@ -1,4 +1,4 @@
-package com.example.kbpark.frontbeaconmonitor;
+package com.example.kbpark.frontbeaconmonitor.Coupon;
 
 /**
  * Created by KBPark on 2017. 2. 23..

@@ -1,4 +1,4 @@
-package com.example.kbpark.frontbeaconmonitor.fragments;
+package com.example.kbpark.frontbeaconmonitor.Coupon;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -29,7 +29,7 @@ public class CouponCart extends Fragment implements LoginMain.onKeyBackPressedLi
         ((LoginMain)context).setOnKeyBackPressedListener(this);
 
         tabLayout = (TabLayout)((LoginMain)context).findViewById(R.id.tabs);
-        tabLayout.setVisibility(View.INVISIBLE);
+        tabLayout.setVisibility(View.INVISIBLE); // GONE으로 하고 layout param로 layout_weight값 맞춰주는게 더 좋긴한데, 일단은 INVISIBLE.
     }
 
     @Override
