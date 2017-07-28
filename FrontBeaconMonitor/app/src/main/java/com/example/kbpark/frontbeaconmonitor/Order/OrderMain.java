@@ -1,4 +1,4 @@
-package com.example.kbpark.frontbeaconmonitor.Sale;
+package com.example.kbpark.frontbeaconmonitor.Order;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,14 +19,14 @@ import static com.example.kbpark.frontbeaconmonitor.LoginMain.saleCurTabListener
  * Created by KBPark on 2017. 2. 21..
  */
 
-public class SaleMain extends Fragment implements View.OnClickListener, LoginMain.onKeyBackPressedListener
+public class OrderMain extends Fragment implements View.OnClickListener, LoginMain.onKeyBackPressedListener
 {
-    public static SaleMain newInstance() { return new SaleMain(); }
+    public static OrderMain newInstance() { return new OrderMain(); }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View rootView = inflater.inflate(R.layout.sale_main, container, false);
+        View rootView = inflater.inflate(R.layout.order_main, container, false);
         viewInit(rootView);
         return rootView;
     }
@@ -37,7 +37,7 @@ public class SaleMain extends Fragment implements View.OnClickListener, LoginMai
     {
         switch (v.getId())
         {
-            case R.id.btn_fruits:
+            case R.id.btn_order:
                 Toast.makeText(getContext(), "fruits clicked", Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -85,7 +85,7 @@ public class SaleMain extends Fragment implements View.OnClickListener, LoginMai
 
     private void viewInit(View rootView)
     {
-        Button btn_fruits = (Button) rootView.findViewById(R.id.btn_fruits);
+        Button btn_fruits = (Button) rootView.findViewById(R.id.btn_order);
 
         btn_fruits.setOnClickListener(this);
 

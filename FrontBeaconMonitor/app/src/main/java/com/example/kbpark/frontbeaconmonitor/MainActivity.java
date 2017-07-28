@@ -55,10 +55,9 @@ public class MainActivity extends AppCompatActivity {
         if(isValidEmail(email) && isValidPassword(pass))
         {
             // Validation Completed
-            /** layout test를 위해 우선 주석처리
+            /** layout test를 위해 우선 주석처리 **/
                     User user = new User(email, pass);
-                    String loginRes = user.login(); // 실제로 login이 일어나는 부분
-             */
+                    String loginRes = user.login(); // 실제로 login이 일어나는 부분 ///////////////////////////////////////////
 
             Intent intent = new Intent(getApplicationContext(), LoginMain.class);
             // intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

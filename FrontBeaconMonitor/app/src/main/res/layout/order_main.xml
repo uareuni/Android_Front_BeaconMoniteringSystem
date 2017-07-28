@@ -26,11 +26,11 @@
                 android:layout_weight="1"
                 android:padding="@dimen/grid_btn_padding">
 
-                <Button android:text="과일 / 채소"
+                <Button android:text="주문 하기"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:id="@+id/btn_fruits" />
+                    android:id="@+id/btn_order" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -76,13 +76,14 @@
                 android:layout_weight="1"
                 android:padding="@dimen/grid_btn_padding">
 
-                <Button android:text="유제품 / 냉동 식품"
+                <Button android:text="주문 리스트"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/btn_order_list" />
 
             </RelativeLayout>
 

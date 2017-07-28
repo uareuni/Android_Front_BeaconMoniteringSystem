@@ -19,14 +19,19 @@ public interface ServiceApi
     Call<LoginResult> login(@Field("user_id") String id,  // 얘네는 server에서 받을 data들. (server에서 받을때는 'request.body.user_id'로!)
                             @Field("user_pw") String pw); // 얘네는 server에서 받을 data들.
 
+//    @FormUrlEncoded
+//    @POST(REGISTER_ADDITIONAL_URL)
+//    Call<RegisterResult> resister(@Field("res_email") String res_email, // email을 id로 사용
+//                                  @Field("res_name") String res_name,
+//                                  @Field("res_pw") String res_pw,
+//                                  @Field("res_birth") String res_birth,
+//                                  @Field("res_address") String res_address,
+//                                  @Field("res_phone") String res_phone
+//    );
+
     @FormUrlEncoded
     @POST(REGISTER_ADDITIONAL_URL)
-    Call<RegisterResult> resister(@Field("res_email") String res_email, // email을 id로 사용
-                                  @Field("res_pw") String res_pw,
-                                  @Field("res_birth") String res_birth,
-                                  @Field("res_address") String res_address,
-                                  @Field("res_phone") String res_phone
-    );
+    Call<RegisterResult> resister(@Field("user_info") String[] userInfo);
 }
 
 

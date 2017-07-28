@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.kbpark.frontbeaconmonitor.Coupon.CouponMain;
-import com.example.kbpark.frontbeaconmonitor.Sale.SaleMain;
+import com.example.kbpark.frontbeaconmonitor.Order.OrderMain;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.FIRST_TITLE_NAME;
 import static com.example.kbpark.frontbeaconmonitor.Cons.SECOND_TITLE_NAME;
@@ -24,7 +24,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter
         // 초기 fragment는 이렇게 adapter를 이용해서 붙인다.
         if(position == 0)
         {
-            return SaleMain.newInstance();
+            return OrderMain.newInstance();
         }
         else
         {

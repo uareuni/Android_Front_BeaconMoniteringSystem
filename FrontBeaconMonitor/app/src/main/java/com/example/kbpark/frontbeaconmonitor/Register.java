@@ -21,6 +21,7 @@ public class Register extends AppCompatActivity
     @Bind(R.id.birth_input)EditText birth_input;
     @Bind(R.id.address_input)EditText address_input;
     @Bind(R.id.phone_input)EditText phone_input;
+    @Bind(R.id.name_input) EditText name_input;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,21 +36,22 @@ public class Register extends AppCompatActivity
     void onRegisterClicked()
     {
         String email = email_input.getText().toString();
+        String name =  name_input.getText().toString();
         String pw = pw_input.getText().toString();
         String birth = birth_input.getText().toString();
         String address = address_input.getText().toString();
         String phone = phone_input.getText().toString();
 
 
-        if(email.isEmpty() || pw.isEmpty() || birth.isEmpty() || address.isEmpty() || phone.isEmpty())
+        if(email.isEmpty() || name.isEmpty() || pw.isEmpty() || birth.isEmpty() || address.isEmpty() || phone.isEmpty())
         {
             Toast.makeText(getApplicationContext(), "모든 항목을 기입하십시오.", Toast.LENGTH_SHORT).show();
         } else
         {
-            /** test를 위한 주석처리
-                User user = new User(email, pw, birth, address, phone);
+
+                User user = new User(email, name, pw, birth, address, phone);
                 String registerRes = user.register(); // 실제 register가 일어나는 부분
-             */
+
 
             Intent intent = new Intent(getApplicationContext(), LoginMain.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

@@ -16,8 +16,8 @@ import retrofit2.Retrofit;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.BASE_URL;
 import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_FAILURE;
-import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_QUERY_ERROR;
 import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_SUCCESS;
+import static com.example.kbpark.frontbeaconmonitor.Cons.QUERY_ERROR;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_FAILURE;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_SUCCESS;
 
@@ -35,6 +35,7 @@ public class User
     String registerRes;
 
     String id; // email 형식
+    String name;
     String pw;
     String birth;
     String address;
@@ -48,10 +49,11 @@ public class User
         this.pw = pw;
     }
 
-    public User(String id, String pw, String birth, String address, String phone)
+    public User(String id, String name, String pw, String birth, String address, String phone)
     {
         retrofitInit();
         this.id = id;
+        this.name = name;
         this.pw = pw;
         this.birth = birth;
         this.address = address;
@@ -66,7 +68,7 @@ public class User
     {
 
         ServiceApi serviceApi = retrofit.create(ServiceApi.class);
-        final Call<LoginResult> res = serviceApi.login(id, pw); // login (실제 통신이 이루어지는 곳)
+        final Call<LoginResult> res = serviceApi.login(id, pw); // login (실제 통신이 이루어지는 곳)/////////////////////////////////////
 
         // 3. 받아온거 뽑아내기 (동기)
 
@@ -81,7 +83,7 @@ public class User
                     // test log
                     if(loginRes != null)
                     {
-                        if (loginRes.equals(LOGIN_QUERY_ERROR)) {
+                        if (loginRes.equals(QUERY_ERROR)) {
                             Log.i("TEST", "Login query error.. " + "loginRes값 : " + loginRes);
                         } else if (loginRes.equals(LOGIN_SUCCESS)) {
                             Log.i("TEST", "Login 성공! " + "loginRes값 : " + loginRes);
@@ -126,7 +128,17 @@ public class User
     public String register()
     {
         ServiceApi serviceApi = retrofit.create(ServiceApi.class);
-        final Call<RegisterResult> res = serviceApi.resister(id, pw, birth, address, phone); // register (실제 통신이 이루어지는 곳)
+
+        String[] userInfo = new String[6];
+        userInfo[0] = id;
+        userInfo[1] = name;
+        userInfo[2] = pw;
+        userInfo[3] = birth;
+        userInfo[4] = address;
+        userInfo[5] = phone;
+
+
+        final Call<RegisterResult> res = serviceApi.resister(userInfo); // register (실제 통신이 이루어지는 곳)
 
         // 3. 받아온거 뽑아내기 (동기)
         new Thread(new Runnable() {
