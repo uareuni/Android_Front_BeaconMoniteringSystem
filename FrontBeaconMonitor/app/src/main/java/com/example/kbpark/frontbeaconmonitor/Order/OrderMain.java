@@ -3,6 +3,7 @@ package com.example.kbpark.frontbeaconmonitor.Order;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,31 @@ public class OrderMain extends Fragment implements View.OnClickListener, LoginMa
         switch (v.getId())
         {
             case R.id.btn_order:
-                Toast.makeText(getContext(), "fruits clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "order clicked! 주문했습니다.", Toast.LENGTH_SHORT).show();
+
+                FragmentManager manager = getActivity().getSupportFragmentManager(); // 여기 괜찮을까?
+                manager.beginTransaction()
+                        .replace(R.id.contaner, new OrderProduct())
+                        .commit();
+
+                // order retrofit test통신
+
+//                String email = "pkb@pkb.pkb";
+//                String pw = "123456";
+//
+//                String phone = "010-1111-2222";
+//                String product = "아메리카노";
+//                String num = "2";
+//
+//                /** layout test를 위해 우선 주석처리 **/
+//                User user = new User(email, pw);
+//                String orderRes = user.order(email, phone, product, num); // 실제로 order가 일어나는 부분 ///////////////////////////////////////////
+
+
+                /** 추가로 해야할거 **/
+                // 1. 주문시 팝업창 '주문 하시겠습니까?' (Y/N)
+                // 2. listView에 추가하기!
+
                 break;
         }
     }
@@ -85,10 +110,9 @@ public class OrderMain extends Fragment implements View.OnClickListener, LoginMa
 
     private void viewInit(View rootView)
     {
-        Button btn_fruits = (Button) rootView.findViewById(R.id.btn_order);
+        Button btn_order = (Button) rootView.findViewById(R.id.btn_order);
 
-        btn_fruits.setOnClickListener(this);
-
+        btn_order.setOnClickListener(this);
     }
 
 }

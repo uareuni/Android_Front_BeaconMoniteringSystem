@@ -4,6 +4,17 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <!-- 블루투스 기능을 사용하기 위해 필요한 권한입니다. -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-feature android:required="true" android:name="android.hardware.bluetooth_le"/>
+
+    <!-- 안드로이드 API 23 (마시멜로우) 이상의 버전에서 필요한 권한입니다.
+        ACCESS_COARSE_LOCATION 혹은 ACCESS_FINE_LOCATION 중 1개의 권한만 필요로 합니다.
+        당사에서는 ACCESS_COARSE_LOCATION 권한을 권장합니다. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".RECOBeacon.RecoMonitoringActivity" >
+        </activity>
+
+        <service android:name="com.perples.recosdk.RECOBeaconService" />
+        <service android:name=".RECOBeacon.RecoBackgroundMonitoringService" />
 
         <activity android:name=".Register" />
         <activity android:name=".LoginMain" />

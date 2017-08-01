@@ -3,6 +3,7 @@ package com.example.kbpark.frontbeaconmonitor;
 import android.util.Log;
 
 import com.example.kbpark.frontbeaconmonitor.retrofit.LoginResult;
+import com.example.kbpark.frontbeaconmonitor.retrofit.OrderResult;
 import com.example.kbpark.frontbeaconmonitor.retrofit.RegisterResult;
 import com.example.kbpark.frontbeaconmonitor.retrofit.ServiceApi;
 
@@ -17,6 +18,8 @@ import retrofit2.Retrofit;
 import static com.example.kbpark.frontbeaconmonitor.Cons.BASE_URL;
 import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_FAILURE;
 import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_SUCCESS;
+import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_FAILURE;
+import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_SUCCESS;
 import static com.example.kbpark.frontbeaconmonitor.Cons.QUERY_ERROR;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_FAILURE;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_SUCCESS;
@@ -33,6 +36,7 @@ public class User
 
     String loginRes;
     String registerRes;
+    String orderRes;
 
     String id; // email 형식
     String name;
@@ -40,6 +44,8 @@ public class User
     String birth;
     String address;
     String phone;
+    String product;
+    String num; // 주문한 product의 개수
 
 
     public User(String id, String pw)
@@ -129,16 +135,7 @@ public class User
     {
         ServiceApi serviceApi = retrofit.create(ServiceApi.class);
 
-        String[] userInfo = new String[6];
-        userInfo[0] = id;
-        userInfo[1] = name;
-        userInfo[2] = pw;
-        userInfo[3] = birth;
-        userInfo[4] = address;
-        userInfo[5] = phone;
-
-
-        final Call<RegisterResult> res = serviceApi.resister(userInfo); // register (실제 통신이 이루어지는 곳)
+        final Call<RegisterResult> res = serviceApi.resister(id, name, pw, birth, address, phone); // register (실제 통신이 이루어지는 곳)
 
         // 3. 받아온거 뽑아내기 (동기)
         new Thread(new Runnable() {
@@ -187,6 +184,51 @@ public class User
         });
 */
         return registerRes;
+    }
+
+    /**
+     * order
+     */
+    public String order(String id, String phone, String product, String num)
+    {
+        ServiceApi serviceApi = retrofit.create(ServiceApi.class);
+
+        String[] orderList = new String[4];
+        orderList[0] = id;
+        orderList[1] = phone;
+        orderList[2] = product;
+        orderList[3] = num;
+
+        final Call<OrderResult> res = serviceApi.order(orderList); // register (실제 통신이 이루어지는 곳)
+
+        // 3. 받아온거 뽑아내기 (동기)
+        new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    orderRes = res.execute().body().getOrderResult();
+
+                    // test log
+                    if(orderRes == null)
+                    {
+                        Log.d("TEST", "Order 통신 실패....");
+                    } else if (orderRes.equals(ORDER_SUCCESS))
+                    {
+                        Log.d("TEST", "Order 성공!");
+                    } else if (orderRes.equals(ORDER_FAILURE))
+                    {
+                        Log.d("TEST", "Order 실패.. ");
+                    }
+
+                } catch (IOException ie)
+                {
+                    ie.printStackTrace();
+                }
+            }
+        }).start();
+
+        return orderRes;
     }
 
 
