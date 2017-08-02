@@ -1,4 +1,4 @@
-package com.example.kbpark.frontbeaconmonitor.Coupon;
+package com.example.kbpark.frontbeaconmonitor.Event;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,14 +16,16 @@ import java.util.ArrayList;
  * Created by KBPark on 2017. 2. 23..
  */
 
-public class CouponAdapter extends BaseAdapter
+public class EventAdapter extends BaseAdapter
 {
+
+    public static EventAdapter eventAdapter = new EventAdapter();
     /** 보통 collection framework이 adapter에 붙어서 adapter를 통해서 실 item에 add, remove하게 하는것이 일반적임! **/
-    private ArrayList<CouponItem> ITEMS = new ArrayList<>();
+    private ArrayList<EventItem> ITEMS = new ArrayList<>();
 
     public void addItem(int iconResId, String title, String desc)
     {
-        ITEMS.add(new CouponItem(iconResId, title, desc));
+        ITEMS.add(new EventItem(iconResId, title, desc));
     }
 
     public void removeItem()
@@ -52,10 +54,10 @@ public class CouponAdapter extends BaseAdapter
         if(convertView == null)
         {
             LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.coupon_item, parent, false);
+            convertView = inflater.inflate(R.layout.event_item, parent, false);
         }
 
-        CouponItem item = ITEMS.get(position);
+        EventItem item = ITEMS.get(position);
 
         ImageView iconImage = (ImageView) convertView.findViewById(R.id.coupon_image);
         TextView title = (TextView) convertView.findViewById(R.id.coupon_title);

@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.kbpark.frontbeaconmonitor.Coupon.CouponMain;
+import com.example.kbpark.frontbeaconmonitor.Event.EventMain;
 import com.example.kbpark.frontbeaconmonitor.Order.OrderMain;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.FIRST_TITLE_NAME;
@@ -28,7 +28,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter
         }
         else
         {
-            return CouponMain.newInstance();
+            return EventMain.newInstance();
         }
     }
 

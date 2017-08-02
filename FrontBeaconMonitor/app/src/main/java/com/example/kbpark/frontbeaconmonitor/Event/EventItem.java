@@ -1,17 +1,17 @@
-package com.example.kbpark.frontbeaconmonitor.Coupon;
+package com.example.kbpark.frontbeaconmonitor.Event;
 
 /**
  * Created by KBPark on 2017. 2. 23..
  */
 
 // POJO class
-public class CouponItem
+public class EventItem
 {
     int resId;
     String title;
     String desc;
 
-    CouponItem(int resId, String title, String desc)
+    EventItem(int resId, String title, String desc)
     {
         this.resId = resId;
         this.title = title;

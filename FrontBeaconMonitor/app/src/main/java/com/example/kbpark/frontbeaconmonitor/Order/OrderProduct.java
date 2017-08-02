@@ -1,19 +1,22 @@
 package com.example.kbpark.frontbeaconmonitor.Order;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.kbpark.frontbeaconmonitor.LoginMain;
 import com.example.kbpark.frontbeaconmonitor.R;
 
+import static com.example.kbpark.frontbeaconmonitor.Event.EventAdapter.eventAdapter;
 import static com.example.kbpark.frontbeaconmonitor.LoginMain.curTabListener;
-import static com.example.kbpark.frontbeaconmonitor.LoginMain.saleCurTabListener;
 
 /**
  * Created by KBPark on 2017. 8. 1..
@@ -21,7 +24,9 @@ import static com.example.kbpark.frontbeaconmonitor.LoginMain.saleCurTabListener
 
 public class OrderProduct extends Fragment implements View.OnClickListener, LoginMain.onKeyBackPressedListener
 {
+    TabLayout tabLayout;
     Button btn_pay;
+    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -42,8 +47,62 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
     public void onClick(View v) // '결제' 버튼 클릭시
     {
         // 1. popup : 결제 하시겠습니까? 결제가 되었습니다
-        // 2. 결제 완료시 '주문 내역 list'에 올리고 notify()
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context); // context 이렇게 써도 될까??
+
+        // 제목
+        alertDialogBuilder.setTitle("결제하기");
+        // AlertDialog
+        alertDialogBuilder
+                .setMessage("아메리카노 1잔 결제하시겠습니까?")
+                .setCancelable(false)
+                .setPositiveButton("결제",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // 결제함
+                                // 2. 결제 완료시 '주문 내역 list'에 올리고 notify()
+                                eventAdapter.addItem(R.mipmap.icon_birth, "아메리카노", "1잔");
+                                eventAdapter.notifyDataSetChanged();
+
+                            }
+                        })
+                .setNegativeButton("취소",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(
+                                    DialogInterface dialog, int id) {
+                                // 다이얼로그 취소
+                                dialog.cancel();
+                            }
+                        });
+
+        // 다이얼로그 생성
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // 다이얼로그 보여주기
+        alertDialog.show();
+
+
+
+
+
+
+
+
         // 3. beacon은 주문 내역에 item이 있는지 계속 탐지하게 한다. (있으면 : server로 push/ 없으면 : nothing)
+
+    }
+
+
+
+    @Override
+    public void onAttach(Context context)
+    {
+        super.onAttach(context);
+        ((LoginMain)context).setOnKeyBackPressedListener(this);
+
+        tabLayout = (TabLayout)((LoginMain)context).findViewById(R.id.tabs);
+        tabLayout.setVisibility(View.GONE); // GONE으로 하고 layout param로 layout_weight값 맞춰주는게 더 좋긴한데, 일단은 INVISIBLE.
+
+        this.context = context;
 
     }
 
@@ -51,40 +110,12 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
     @Override
     public void onBackKey()
     {
-        // back key 다시 원상복구 시켜놓기!
-        LoginMain activity = (LoginMain) getActivity();
-        if(activity != null)
-        {
-            activity.setOnKeyBackPressedListener(null);
-            activity.onBackPressed();
-        }
-    }
-
-    @Override
-    public void onAttach(Context context)
-    {
-        super.onAttach(context);
-        ((LoginMain) context).setOnKeyBackPressedListener(this);
-        saleCurTabListener = this;
-    }
-
-    // 참고로, 지금 내 경우는 SaleMain이랑 CouponMain에 있는 layout에다가 fragment들을 붙이고 있는 상황이라
-    // 해당 두 Fragment들에서만 setUserVisibleHint가 먹는것 같다.
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser)
-    {
-        if(isVisibleToUser)
-        {
-            // listener setting
-            if(getContext()!=null)
-            {
-                Toast.makeText(getContext(), "sale set listener", Toast.LENGTH_SHORT).show();
-                ((LoginMain) getContext()).setOnKeyBackPressedListener(saleCurTabListener);
-                curTabListener = this;
-            }
-        }
-        super.setUserVisibleHint(isVisibleToUser);
+        FragmentManager manager = getFragmentManager();
+        manager.beginTransaction()
+                .detach(this)
+                .commit();
+        ((LoginMain) getContext()).setOnKeyBackPressedListener(curTabListener);
+        tabLayout.setVisibility(View.VISIBLE);
     }
 
 }

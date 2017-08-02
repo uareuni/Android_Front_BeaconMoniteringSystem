@@ -47,7 +47,7 @@
             android:layout_marginLeft="5dp" />
 
         <Button
-            android:id="@+id/btn_coupon_cart"
+            android:id="@+id/btn_order_cart"
             android:background="@mipmap/icon_cart"
             android:layout_width="35dp"
             android:layout_height="35dp"

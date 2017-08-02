@@ -50,7 +50,7 @@ public class LoginMain extends RecoActivity implements RECOMonitoringListener, V
     super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
 
-        Button cartBtn = (Button) findViewById(R.id.btn_coupon_cart);
+        Button cartBtn = (Button) findViewById(R.id.btn_order_cart);
         cartBtn.setOnClickListener(this);
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
@@ -249,8 +249,8 @@ public class LoginMain extends RecoActivity implements RECOMonitoringListener, V
     }
 
     private onKeyBackPressedListener mOnKeyBackPressedListener;
-    public static onKeyBackPressedListener saleCurTabListener;
-    public static onKeyBackPressedListener couponCurTabListener;
+    public static onKeyBackPressedListener menuCurTabListener;
+    public static onKeyBackPressedListener eventCurTabListener;
     public static onKeyBackPressedListener curTabListener; // for cart fragment detach
 
     public void setOnKeyBackPressedListener(onKeyBackPressedListener listener)

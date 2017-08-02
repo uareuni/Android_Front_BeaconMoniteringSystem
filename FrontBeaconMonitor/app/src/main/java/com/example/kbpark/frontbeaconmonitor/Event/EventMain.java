@@ -1,4 +1,4 @@
-package com.example.kbpark.frontbeaconmonitor.Coupon;
+package com.example.kbpark.frontbeaconmonitor.Event;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,27 +13,27 @@ import android.widget.Toast;
 import com.example.kbpark.frontbeaconmonitor.LoginMain;
 import com.example.kbpark.frontbeaconmonitor.R;
 
-import static com.example.kbpark.frontbeaconmonitor.LoginMain.couponCurTabListener;
 import static com.example.kbpark.frontbeaconmonitor.LoginMain.curTabListener;
+import static com.example.kbpark.frontbeaconmonitor.LoginMain.eventCurTabListener;
 
 /**
  * Created by KBPark on 2017. 2. 21..
  */
 
-public class CouponMain extends Fragment implements LoginMain.onKeyBackPressedListener, AdapterView.OnItemClickListener
+public class EventMain extends Fragment implements LoginMain.onKeyBackPressedListener, AdapterView.OnItemClickListener
 {
-    public static CouponMain newInstance()
+    public static EventMain newInstance()
     {
-        return new CouponMain();
+        return new EventMain();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View rootView = inflater.inflate(R.layout.coupon_main, container, false);
+        View rootView = inflater.inflate(R.layout.event_main, container, false);
 
         // for test
-        CouponAdapter adapter = new CouponAdapter();
+        EventAdapter adapter = new EventAdapter();
         adapter.addItem(R.mipmap.icon_birth, "타이틀", "설명~");
         adapter.addItem(R.mipmap.icon_home, "타이틀", "설명~");
         adapter.addItem(R.mipmap.icon_email, "타이틀", "설명~");
@@ -69,7 +69,7 @@ public class CouponMain extends Fragment implements LoginMain.onKeyBackPressedLi
     {
         super.onAttach(context);
         ((LoginMain) context).setOnKeyBackPressedListener(this);
-        couponCurTabListener = this;
+        eventCurTabListener = this;
     }
 
     // 참고로, 지금 내 경우는 SaleMain이랑 CouponMain에 있는 layout에다가 fragment들을 붙이고 있는 상황이라
@@ -82,8 +82,8 @@ public class CouponMain extends Fragment implements LoginMain.onKeyBackPressedLi
             // listener setting
             if(getContext()!=null)
             {
-                Toast.makeText(getContext(), "coupon set listener", Toast.LENGTH_SHORT).show();
-                ((LoginMain) getContext()).setOnKeyBackPressedListener(couponCurTabListener);
+                Toast.makeText(getContext(), "event set listener", Toast.LENGTH_SHORT).show();
+                ((LoginMain) getContext()).setOnKeyBackPressedListener(eventCurTabListener);
                 curTabListener = this;
             }
         }

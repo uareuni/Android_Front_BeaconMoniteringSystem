@@ -14,7 +14,7 @@ import com.example.kbpark.frontbeaconmonitor.LoginMain;
 import com.example.kbpark.frontbeaconmonitor.R;
 
 import static com.example.kbpark.frontbeaconmonitor.LoginMain.curTabListener;
-import static com.example.kbpark.frontbeaconmonitor.LoginMain.saleCurTabListener;
+import static com.example.kbpark.frontbeaconmonitor.LoginMain.menuCurTabListener;
 
 /**
  * Created by KBPark on 2017. 2. 21..
@@ -85,7 +85,7 @@ public class OrderMain extends Fragment implements View.OnClickListener, LoginMa
     {
         super.onAttach(context);
         ((LoginMain) context).setOnKeyBackPressedListener(this);
-        saleCurTabListener = this;
+        menuCurTabListener = this;
     }
 
     // 참고로, 지금 내 경우는 SaleMain이랑 CouponMain에 있는 layout에다가 fragment들을 붙이고 있는 상황이라
@@ -99,8 +99,8 @@ public class OrderMain extends Fragment implements View.OnClickListener, LoginMa
             // listener setting
             if(getContext()!=null)
             {
-                Toast.makeText(getContext(), "sale set listener", Toast.LENGTH_SHORT).show();
-                ((LoginMain) getContext()).setOnKeyBackPressedListener(saleCurTabListener);
+                Toast.makeText(getContext(), "menu set listener", Toast.LENGTH_SHORT).show();
+                ((LoginMain) getContext()).setOnKeyBackPressedListener(menuCurTabListener);
                 curTabListener = this;
             }
         }

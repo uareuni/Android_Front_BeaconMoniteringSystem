@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by KBPark on 2016. 8. 2..
  */
-public class ListAdapter extends BaseAdapter
+public class OrderAdapter extends BaseAdapter
 {
     // Item들을 관리할 수 있는 List<Item>을 여기서 선언해 관리한다.
 
@@ -32,7 +32,7 @@ public class ListAdapter extends BaseAdapter
     }
 
 
-    public ListAdapter(Context context)
+    public OrderAdapter(Context context)
     {
         mContext = context;
     }
