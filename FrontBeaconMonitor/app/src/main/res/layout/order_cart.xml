@@ -8,7 +8,6 @@
         android:text="주문 내역"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4"
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:textSize="25dp" />
@@ -29,7 +28,7 @@
             android:layout_weight="0.88"
             android:layout_above="@+id/btn_get_coupon"
             android:layout_alignParentTop="true"
-            android:id="@+id/listview_coupon" />
+            android:id="@+id/listview_order_cart" />
 
     </RelativeLayout>
 

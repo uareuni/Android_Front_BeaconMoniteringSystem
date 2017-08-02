@@ -43,7 +43,7 @@ public class OrderMain extends Fragment implements View.OnClickListener, LoginMa
 
                 FragmentManager manager = getActivity().getSupportFragmentManager(); // 여기 괜찮을까?
                 manager.beginTransaction()
-                        .replace(R.id.contaner, new OrderProduct())
+                        .add(R.id.contaner, new OrderProduct())
                         .commit();
 
                 // order retrofit test통신

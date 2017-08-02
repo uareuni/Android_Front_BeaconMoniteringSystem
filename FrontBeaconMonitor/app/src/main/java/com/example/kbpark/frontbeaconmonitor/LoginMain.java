@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.kbpark.frontbeaconmonitor.Coupon.CouponCart;
+import com.example.kbpark.frontbeaconmonitor.Order.OrderCart;
 import com.example.kbpark.frontbeaconmonitor.RECOBeacon.RecoActivity;
 import com.example.kbpark.frontbeaconmonitor.RECOBeacon.RecoMonitoringListAdapter;
 import com.example.kbpark.frontbeaconmonitor.tabs.CustomViewPager;
@@ -238,7 +238,7 @@ public class LoginMain extends RecoActivity implements RECOMonitoringListener, V
     {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction()
-                .replace(R.id.contaner, new CouponCart())
+                .replace(R.id.contaner, new OrderCart())
                 .commit();
     }
 
@@ -261,7 +261,7 @@ public class LoginMain extends RecoActivity implements RECOMonitoringListener, V
     @Override
     public void onBackPressed()
     {
-        // 맨 처음에는 null이겠지만, 적용되는 fragment의 onAttach()(<-얘는 fragment가 view에 붙을때 호출되는 call back임) 호출 후에는 초기화가 되기 때문에 back key를 뺏아올 수 있다.
+        // 맨 처음에는 null이겠지만, 적용되는 fragment의 onAttach()(<-얘는 fragment가 view에 붙을때 호출되는 callback임) 호출 후에는 초기화가 되기 때문에 back key를 뺏아올 수 있다.
         if (mOnKeyBackPressedListener != null)
         {
             mOnKeyBackPressedListener.onBackKey();
