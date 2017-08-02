@@ -38,7 +38,6 @@ public class LoginMain extends RecoActivity implements RECOMonitoringListener, V
     private boolean mInitialSetting = true;
 
     /**
-     * We recommend 1 second for scanning, 10 seconds interval between scanning, and 60 seconds for region expiration time.
      * 1초 스캔, 10초 간격으로 스캔, 60초의 region expiration time은 당사 권장사항입니다.
      */
     private long mScanPeriod = 1*1000L;
@@ -75,7 +74,6 @@ public class LoginMain extends RecoActivity implements RECOMonitoringListener, V
         mRecoManager.setSleepPeriod(mSleepPeriod);
 
         /**
-         *
          * RECOServiceConnectListener와 함께 RECOBeaconManager를 bind 합니다. RECOServiceConnectListener는 RECOActivity에 구현되어 있습니다.
          * monitoring 및 ranging 기능을 사용하기 위해서는, 이 메소드가 "반드시" 호출되어야 합니다.
          * bind후에, onServiceConnect() 콜백 메소드가 호출됩니다. 콜백 메소드 호출 이후 monitoring / ranging 작업을 수행하시기 바랍니다.

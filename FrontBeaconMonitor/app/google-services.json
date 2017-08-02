@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "350793759917",
+    "firebase_url": "https://capstone-195ca.firebaseio.com",
+    "project_id": "capstone-195ca",
+    "storage_bucket": "capstone-195ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350793759917:android:7b8ac7c713847b93",
+        "android_client_info": {
+          "package_name": "com.ebookfrenzy.push_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350793759917-b5mlrvo0qrhh8ao6cocv2kddpp6v4628.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc4PPGxa4K1O92PALZFPMgPMqYYxp-kqU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350793759917:android:1422dac53add94ba",
+        "android_client_info": {
+          "package_name": "com.example.kbpark.frontbeaconmonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350793759917-b5mlrvo0qrhh8ao6cocv2kddpp6v4628.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAc4PPGxa4K1O92PALZFPMgPMqYYxp-kqU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

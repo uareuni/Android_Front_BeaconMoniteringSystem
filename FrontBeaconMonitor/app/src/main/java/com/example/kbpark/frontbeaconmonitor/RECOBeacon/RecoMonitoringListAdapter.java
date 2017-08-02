@@ -38,6 +38,8 @@ import com.perples.recosdk.RECOBeaconRegionState;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.example.kbpark.frontbeaconmonitor.Event.EventAdapter.eventAdapter;
+
 public class RecoMonitoringListAdapter extends BaseAdapter {
 
     private HashMap<RECOBeaconRegion, RECOBeaconRegionState> mMonitoredRegions;
@@ -117,6 +119,9 @@ public class RecoMonitoringListAdapter extends BaseAdapter {
             viewHolder.recoRegionBeaconCount.setText("You started monitoring inside of the region.");
 
             Log.i("TTEST", "이미 안에 있습니다!");
+            Log.i("TTEST", "현재 주문 완료 된 item 수 : " + eventAdapter.getCount() + "개");
+
+
             return convertView;
         }
 

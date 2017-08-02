@@ -6,7 +6,8 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_ADDITIONAL_URL;
-import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_ADDITIONAL_URL;
+import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_ENQUEUE_URL;
+import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_TOKENPUSH_URL;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_ADDITIONAL_URL;
 
 /**
@@ -31,9 +32,13 @@ public interface ServiceApi
     );
 
     @FormUrlEncoded
-    @POST(ORDER_ADDITIONAL_URL)
+    @POST(ORDER_ENQUEUE_URL)
     Call<OrderResult> order(@Field("orderList") String[] orderList); // name, phone, product, num
 
+
+    @FormUrlEncoded
+    @POST(ORDER_TOKENPUSH_URL)
+    Call<TokenResult> pushTokenToServer(@Field("token") String token, @Field("id") String id); // token, id
 }
 
 

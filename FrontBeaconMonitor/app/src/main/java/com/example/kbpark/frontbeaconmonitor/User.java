@@ -6,6 +6,7 @@ import com.example.kbpark.frontbeaconmonitor.retrofit.LoginResult;
 import com.example.kbpark.frontbeaconmonitor.retrofit.OrderResult;
 import com.example.kbpark.frontbeaconmonitor.retrofit.RegisterResult;
 import com.example.kbpark.frontbeaconmonitor.retrofit.ServiceApi;
+import com.example.kbpark.frontbeaconmonitor.retrofit.TokenResult;
 
 import java.io.IOException;
 
@@ -31,14 +32,15 @@ import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_SUCCESS;
 // 실질적인 retrofit 통신이 일어나는 class
 public class User
 {
-    HttpLoggingInterceptor logging;
-    Retrofit retrofit;
+    static HttpLoggingInterceptor logging;
+    static Retrofit retrofit;
 
     String loginRes;
     String registerRes;
     String orderRes;
+    static String tokenRes;
 
-    String id; // email 형식
+    static String id; // email 형식
     String name;
     String pw;
     String birth;
@@ -231,8 +233,46 @@ public class User
         return orderRes;
     }
 
+    /**
+     * order - push token
+     */
+    public static void pushTokenToServer(String token)
+    {
+        retrofitInit();
+        ServiceApi serviceApi = retrofit.create(ServiceApi.class);
+        final Call<TokenResult> res = serviceApi.pushTokenToServer(token, "pkb@pkb.pkb"); // token push (실제 통신이 이루어지는 곳)
 
-    private void retrofitInit()
+        // 3. 받아온거 뽑아내기 (동기)
+        new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    tokenRes = res.execute().body().getTokenResult();
+
+                    // test log
+                    if(tokenRes == null)
+                    {
+                        Log.d("TEST", "Token 통신 실패....");
+                    } else if (tokenRes.equals(REGISTER_SUCCESS))
+                    {
+                        Log.d("TEST", "Token 성공!");
+                    } else if (tokenRes.equals(REGISTER_FAILURE))
+                    {
+                        Log.d("TEST", "Token 실패.. ");
+                    }
+
+
+                } catch (IOException ie)
+                {
+                    ie.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+
+    public static void retrofitInit()
     {
         /** < retrofit2 : POST > **/
 
