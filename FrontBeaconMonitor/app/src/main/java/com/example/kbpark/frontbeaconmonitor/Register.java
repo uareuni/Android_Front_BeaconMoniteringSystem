@@ -3,6 +3,7 @@ package com.example.kbpark.frontbeaconmonitor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -48,16 +49,23 @@ public class Register extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "모든 항목을 기입하십시오.", Toast.LENGTH_SHORT).show();
         } else
         {
+            // 1. register
+            User user = User.getInstance();
+            user.setName(name);
+            user.setPw(pw);
+            user.setAddress(address);
+            user.setBirth(birth);
+            user.setPhone(phone);
 
-                User user = new User(email, name, pw, birth, address, phone);
-                String registerRes = user.register(); // 실제 register가 일어나는 부분
+            String registerRes = user.register(); // 실제 register가 일어나는 부분
 
+            // 2. send token to server
+            Log.i("TOKEN", "token to server : " + user.getToken());
+            user.pushTokenToServer();
 
             Intent intent = new Intent(getApplicationContext(), LoginMain.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
-
-
         }
         // check the empty values!
     }

@@ -7,7 +7,7 @@ package com.example.kbpark.frontbeaconmonitor;
 public class Cons
 {
     //public static final String BASE_URL = "http://10.0.2.2:4903"; // 에뮬레이터에서 localhost에 접근하기 위해서는 10.0.2.2 주소로 접근해야함!!!!!
-    public static final String BASE_URL = "http://172.17.204.19:4902";
+    public static final String BASE_URL = "http://203.252.99.145:4902";
 
     // 1. login
     public static final String LOGIN_ADDITIONAL_URL = "/signin";
@@ -32,6 +32,13 @@ public class Cons
 
     public static final String FIRST_TITLE_NAME = "메뉴";
     public static final String SECOND_TITLE_NAME = "진행중인 이벤트";
+
+    // monitoring state
+    public static final boolean OUT = false;
+    public static final boolean IN = true;
+    public static boolean MONITORING_STATE = OUT;
+
+
 
 
 

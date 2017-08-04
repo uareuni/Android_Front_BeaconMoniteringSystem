@@ -136,7 +136,10 @@ public class MainActivity extends AppCompatActivity {
         {
             // Validation Completed
             /** layout test를 위해 우선 주석처리 **/
-            User user = new User(email, pass);
+            User user = User.getInstance();
+            user.setId(email);
+            user.setPw(pass);
+
             String loginRes = user.login(); // 실제로 login이 일어나는 부분 ///////////////////////////////////////////
 
             Intent intent = new Intent(getApplicationContext(), LoginMain.class);

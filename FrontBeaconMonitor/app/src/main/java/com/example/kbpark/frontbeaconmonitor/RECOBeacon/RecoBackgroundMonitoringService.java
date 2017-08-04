@@ -47,23 +47,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
-import java.util.logging.Handler;
+
+import static com.example.kbpark.frontbeaconmonitor.Cons.IN;
+import static com.example.kbpark.frontbeaconmonitor.Cons.MONITORING_STATE;
+import static com.example.kbpark.frontbeaconmonitor.Cons.OUT;
 
 /**
- * RECOBackgroundMonitoringService is to monitor regions in the background.
- *
  * RECOBackgroundMonitoringService는 백그라운드에서 monitoring을 수행합니다.
  */
 public class RecoBackgroundMonitoringService extends Service implements RECOMonitoringListener, RECOServiceConnectListener {
 
-    private Handler mHandler;
-
     /**
-     * We recommend 1 second for scanning, 10 seconds interval between scanning, and 60 seconds for region expiration time.
      * 1초 스캔, 10초 간격으로 스캔, 60초의 region expiration time은 당사 권장사항입니다.
      */
     private long mScanDuration = 1*1000L;
-    private long mSleepDuration = 10*1000L;
+    private long mSleepDuration = 5*1000L;
     private long mRegionExpirationTime = 60*1000L;
     private int mNotificationID = 9999;
 
@@ -80,11 +78,6 @@ public class RecoBackgroundMonitoringService extends Service implements RECOMoni
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i("BackMonitoringService", "onStartCommand()");
         /**
-         * Create an instance of RECOBeaconManager (to set scanning target and ranging timeout in the background.)
-         * If you want to scan only RECO, and do not set ranging timeout in the backgournd, create an instance:
-         * 		mRecoManager = RECOBeaconManager.getInstance(getApplicationContext(), true, false);
-         * WARNING: False enableRangingTimeout will affect the battery consumption.
-         *
          * RECOBeaconManager 인스턴스틀 생성합니다. (스캔 대상 및 백그라운드 ranging timeout 설정)
          * RECO만을 스캔하고, 백그라운드 ranging timeout을 설정하고 싶지 않으시다면, 다음과 같이 생성하시기 바랍니다.
          * 		mRecoManager = RECOBeaconManager.getInstance(getApplicationContext(), true, false);
@@ -92,7 +85,6 @@ public class RecoBackgroundMonitoringService extends Service implements RECOMoni
          */
         mRecoManager = RECOBeaconManager.getInstance(getApplicationContext(), MainActivity.SCAN_RECO_ONLY, MainActivity.ENABLE_BACKGROUND_RANGING_TIMEOUT);
         this.bindRECOService();
-        //this should be set to run in the background.
         //background에서 동작하기 위해서는 반드시 실행되어야 합니다.
         return START_STICKY;
     }
@@ -188,6 +180,32 @@ public class RecoBackgroundMonitoringService extends Service implements RECOMoni
     public void didDetermineStateForRegion(RECOBeaconRegionState state, RECOBeaconRegion region) {
         Log.i("BackMonitoringService", "didDetermineStateForRegion()");
         //Write the code when the state of the monitored region is changed
+
+
+
+
+
+
+
+
+
+
+        if(state.toString().equals(RECOBeaconRegionState.RECOBeaconRegionInside.toString())){
+            Log.i("BackMonitoringService", "Beacon 범위안에 있음!");
+            MONITORING_STATE = IN;
+        } else if(state.toString().equals(RECOBeaconRegionState.RECOBeaconRegionOutside.toString())){
+            Log.i("BackMonitoringService", "주변에 Beacon이 없음.");
+            MONITORING_STATE = OUT;
+        }
+
+
+
+
+
+
+
+
+
     }
 
     @Override
@@ -200,6 +218,8 @@ public class RecoBackgroundMonitoringService extends Service implements RECOMoni
         //Get the region and found beacon list in the entered region
         Log.i("BackMonitoringService", "didEnterRegion() - " + region.getUniqueIdentifier());
 
+        MONITORING_STATE = IN;
+
         this.popupNotification("Inside of " + region.getUniqueIdentifier());
         //Write the code when the device is enter the region
     }
@@ -207,12 +227,11 @@ public class RecoBackgroundMonitoringService extends Service implements RECOMoni
     @Override
     public void didExitRegion(RECOBeaconRegion region) {
         /**
-         * For the first run, this callback method will not be called.
-         * Please check the state of the region using didDetermineStateForRegion() callback method.
-         *
          * 최초 실행시, 이 콜백 메소드는 호출되지 않습니다.
          * didDetermineStateForRegion() 콜백 메소드를 통해 region 상태를 확인할 수 있습니다.
          */
+
+        MONITORING_STATE = OUT;
 
         Log.i("BackMonitoringService", "didExitRegion() - " + region.getUniqueIdentifier());
         this.popupNotification("Outside of " + region.getUniqueIdentifier());

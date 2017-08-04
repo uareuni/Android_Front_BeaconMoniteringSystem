@@ -46,7 +46,7 @@
             </intent-filter>
         </service>
 
-
+        <service android:name=".Order.OrderEventService"/>
 
         <activity android:name=".Register" />
         <activity android:name=".LoginMain" />

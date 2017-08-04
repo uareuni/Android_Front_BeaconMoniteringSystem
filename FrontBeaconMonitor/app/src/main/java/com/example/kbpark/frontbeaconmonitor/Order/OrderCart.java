@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.example.kbpark.frontbeaconmonitor.LoginMain;
 import com.example.kbpark.frontbeaconmonitor.R;
 
-import static com.example.kbpark.frontbeaconmonitor.Event.EventAdapter.eventAdapter;
 import static com.example.kbpark.frontbeaconmonitor.LoginMain.curTabListener;
 
 /**
@@ -24,9 +23,10 @@ import static com.example.kbpark.frontbeaconmonitor.LoginMain.curTabListener;
 
 public class OrderCart extends Fragment implements LoginMain.onKeyBackPressedListener, AdapterView.OnItemClickListener
 {
+    public static OrderAdapter orderAdapter = new OrderAdapter();
+
     TabLayout tabLayout;
     ListView cartOrder;
-//    EventAdapter adapter; // 나중에 입맛에 맞게 OrderAdapter 수정에서 대체하자!!!!!!!! 지금은 test를 위해 잘 구현된 EventAdapter 사용
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -36,7 +36,7 @@ public class OrderCart extends Fragment implements LoginMain.onKeyBackPressedLis
         // for test
         cartOrder = (ListView) rootView.findViewById(R.id.listview_order_cart);
         cartOrder.setOnItemClickListener(this);
-        cartOrder.setAdapter(eventAdapter);
+        cartOrder.setAdapter(orderAdapter);
 
         return rootView;
     }

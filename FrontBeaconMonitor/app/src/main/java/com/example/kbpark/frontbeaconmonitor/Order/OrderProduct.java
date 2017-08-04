@@ -15,8 +15,8 @@ import android.widget.Button;
 import com.example.kbpark.frontbeaconmonitor.LoginMain;
 import com.example.kbpark.frontbeaconmonitor.R;
 
-import static com.example.kbpark.frontbeaconmonitor.Event.EventAdapter.eventAdapter;
 import static com.example.kbpark.frontbeaconmonitor.LoginMain.curTabListener;
+import static com.example.kbpark.frontbeaconmonitor.Order.OrderCart.orderAdapter;
 
 /**
  * Created by KBPark on 2017. 8. 1..
@@ -60,8 +60,8 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
                             public void onClick(DialogInterface dialog, int id) {
                                 // 결제함
                                 // 2. 결제 완료시 '주문 내역 list'에 올리고 notify()
-                                eventAdapter.addItem(R.mipmap.icon_birth, "아메리카노", "1잔");
-                                eventAdapter.notifyDataSetChanged();
+                                orderAdapter.addItem("아메리카노", "1잔");
+                                orderAdapter.notifyDataSetChanged();
 
                             }
                         })

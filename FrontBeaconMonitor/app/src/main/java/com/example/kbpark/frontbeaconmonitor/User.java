@@ -24,6 +24,7 @@ import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_SUCCESS;
 import static com.example.kbpark.frontbeaconmonitor.Cons.QUERY_ERROR;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_FAILURE;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_SUCCESS;
+import static com.example.kbpark.frontbeaconmonitor.Order.OrderCart.orderAdapter;
 
 /**
  * Created by KBPark on 2017. 1. 31..
@@ -32,6 +33,8 @@ import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_SUCCESS;
 // 실질적인 retrofit 통신이 일어나는 class
 public class User
 {
+    private static User userInstance = new User();
+
     static HttpLoggingInterceptor logging;
     static Retrofit retrofit;
 
@@ -41,31 +44,21 @@ public class User
     static String tokenRes;
 
     static String id; // email 형식
-    String name;
+    String name = "박경배";
     String pw;
     String birth;
     String address;
     String phone;
     String product;
     String num; // 주문한 product의 개수
+    String token;
 
-
-    public User(String id, String pw)
-    {
+    private User() {
         retrofitInit();
-        this.id = id;
-        this.pw = pw;
     }
 
-    public User(String id, String name, String pw, String birth, String address, String phone)
-    {
-        retrofitInit();
-        this.id = id;
-        this.name = name;
-        this.pw = pw;
-        this.birth = birth;
-        this.address = address;
-        this.phone = phone;
+    public static User getInstance(){
+        return userInstance;
     }
 
 
@@ -191,15 +184,23 @@ public class User
     /**
      * order
      */
-    public String order(String id, String phone, String product, String num)
+    public String order(String product, String num)
     {
         ServiceApi serviceApi = retrofit.create(ServiceApi.class);
+
+        // listview의 item갯수만큼 product 뽑아내서 보내기!
+        for(int i=0; i<orderAdapter.getCount(); i++){
+            Log.i("adapter", "item : " + orderAdapter.getItem(i) + "\n");
+        }
+
 
         String[] orderList = new String[4];
         orderList[0] = id;
         orderList[1] = phone;
         orderList[2] = product;
         orderList[3] = num;
+
+
 
         final Call<OrderResult> res = serviceApi.order(orderList); // register (실제 통신이 이루어지는 곳)
 
@@ -236,11 +237,11 @@ public class User
     /**
      * order - push token
      */
-    public static void pushTokenToServer(String token)
+    public void pushTokenToServer()
     {
         retrofitInit();
         ServiceApi serviceApi = retrofit.create(ServiceApi.class);
-        final Call<TokenResult> res = serviceApi.pushTokenToServer(token, "pkb@pkb.pkb"); // token push (실제 통신이 이루어지는 곳)
+        final Call<TokenResult> res = serviceApi.pushTokenToServer(this.token, id); // token push (실제 통신이 이루어지는 곳)
 
         // 3. 받아온거 뽑아내기 (동기)
         new Thread(new Runnable() {
@@ -296,4 +297,61 @@ public class User
     }
 
 
+    // setter
+    public static void setId(String id) {
+        User.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPw(String pw) {
+        this.pw = pw;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    // getter
+    public static String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPw() {
+        return pw;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getToken() {
+        return token;
+    }
 }

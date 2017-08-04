@@ -22,6 +22,8 @@ import static com.example.kbpark.frontbeaconmonitor.LoginMain.eventCurTabListene
 
 public class EventMain extends Fragment implements LoginMain.onKeyBackPressedListener, AdapterView.OnItemClickListener
 {
+    public static EventAdapter eventAdapter = new EventAdapter();
+
     public static EventMain newInstance()
     {
         return new EventMain();
@@ -33,14 +35,13 @@ public class EventMain extends Fragment implements LoginMain.onKeyBackPressedLis
         View rootView = inflater.inflate(R.layout.event_main, container, false);
 
         // for test
-        EventAdapter adapter = new EventAdapter();
-        adapter.addItem(R.mipmap.icon_birth, "타이틀", "설명~");
-        adapter.addItem(R.mipmap.icon_home, "타이틀", "설명~");
-        adapter.addItem(R.mipmap.icon_email, "타이틀", "설명~");
+        eventAdapter.addItem(R.mipmap.icon_birth, "타이틀", "설명~");
+        eventAdapter.addItem(R.mipmap.icon_home, "타이틀", "설명~");
+        eventAdapter.addItem(R.mipmap.icon_email, "타이틀", "설명~");
 
         ListView listview = (ListView) rootView.findViewById(R.id.listview_coupon);
         listview.setOnItemClickListener(this);
-        listview.setAdapter(adapter);
+        listview.setAdapter(eventAdapter);
 
         return rootView;
     }

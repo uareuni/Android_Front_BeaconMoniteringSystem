@@ -60,10 +60,6 @@ public class OrderMain extends Fragment implements View.OnClickListener, LoginMa
 //                String orderRes = user.order(email, phone, product, num); // 실제로 order가 일어나는 부분 ///////////////////////////////////////////
 
 
-                /** 추가로 해야할거 **/
-                // 1. 주문시 팝업창 '주문 하시겠습니까?' (Y/N)
-                // 2. listView에 추가하기!
-
                 break;
         }
     }

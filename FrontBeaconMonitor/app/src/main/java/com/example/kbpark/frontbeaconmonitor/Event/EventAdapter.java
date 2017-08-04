@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class EventAdapter extends BaseAdapter
 {
 
-    public static EventAdapter eventAdapter = new EventAdapter();
+
     /** 보통 collection framework이 adapter에 붙어서 adapter를 통해서 실 item에 add, remove하게 하는것이 일반적임! **/
     private ArrayList<EventItem> ITEMS = new ArrayList<>();
 
@@ -28,8 +28,12 @@ public class EventAdapter extends BaseAdapter
         ITEMS.add(new EventItem(iconResId, title, desc));
     }
 
-    public void removeItem()
+    public void removeItem(int index)
     {
+        ITEMS.remove(index);
+    }
+
+    public void getItemProduct(){
 
     }
 
