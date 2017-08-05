@@ -220,7 +220,7 @@ public class RecoBackgroundMonitoringService extends Service implements RECOMoni
 
         MONITORING_STATE = IN;
 
-        this.popupNotification("Inside of " + region.getUniqueIdentifier());
+//        this.popupNotification("Inside of " + region.getUniqueIdentifier());
         //Write the code when the device is enter the region
     }
 
@@ -234,7 +234,7 @@ public class RecoBackgroundMonitoringService extends Service implements RECOMoni
         MONITORING_STATE = OUT;
 
         Log.i("BackMonitoringService", "didExitRegion() - " + region.getUniqueIdentifier());
-        this.popupNotification("Outside of " + region.getUniqueIdentifier());
+//        this.popupNotification("Outside of " + region.getUniqueIdentifier());
         //Write the code when the device is exit the region
     }
 

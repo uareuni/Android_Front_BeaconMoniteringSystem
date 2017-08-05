@@ -14,6 +14,10 @@
         당사에서는 ACCESS_COARSE_LOCATION 권한을 권장합니다. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- use wake_lock to wake activity up when push notification is received -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
 
     <application
         android:allowBackup="true"

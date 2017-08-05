@@ -25,12 +25,6 @@ public class OrderAdapter extends BaseAdapter
         this.notifyDataSetChanged();
     }
 
-    public void removeItem(int index)
-    {
-        ORDER_ITEMS.remove(index);
-        this.notifyDataSetChanged();
-    }
-
     public String getProduct(int idx){
         return ORDER_ITEMS.get(idx).getProduct();
     }
@@ -68,10 +62,11 @@ public class OrderAdapter extends BaseAdapter
 //        ImageView iconImage = (ImageView) convertView.findViewById(R.id.product_image);
         TextView product = (TextView) convertView.findViewById(R.id.tv_product);
         TextView num = (TextView) convertView.findViewById(R.id.tv_num);
+        TextView orderState = (TextView) convertView.findViewById(R.id.order_state);
 
-//        iconImage.setImageResource(item.getImageRes());
         product.setText(item.getProduct());
         num.setText(item.getProductNum());
+        orderState.setText("결제 완료");
 
         return convertView;
     }

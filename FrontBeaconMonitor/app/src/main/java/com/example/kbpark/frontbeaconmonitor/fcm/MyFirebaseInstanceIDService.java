@@ -16,6 +16,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     {
         // Get updated InstanceID token.
         User.getInstance().setToken(FirebaseInstanceId.getInstance().getToken());
-        Log.d(TAG, "생성된 TOKEN: " + User.getInstance().getToken());
+        Log.d(TAG, "새로 refresh 된 TOKEN: " + User.getInstance().getToken());
+
     }
 }

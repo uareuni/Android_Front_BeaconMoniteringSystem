@@ -60,7 +60,7 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
                             public void onClick(DialogInterface dialog, int id) {
                                 // 결제함
                                 // 2. 결제 완료시 '주문 내역 list'에 올리고 notify()
-                                orderAdapter.addItem("아메리카노", "1잔");
+                                orderAdapter.addItem("아메리카노", "1");
                                 orderAdapter.notifyDataSetChanged();
 
                             }

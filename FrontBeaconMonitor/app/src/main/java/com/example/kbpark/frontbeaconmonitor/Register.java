@@ -60,7 +60,7 @@ public class Register extends AppCompatActivity
             String registerRes = user.register(); // 실제 register가 일어나는 부분
 
             // 2. send token to server
-            Log.i("TOKEN", "token to server : " + user.getToken());
+            Log.i("TOKEN", "token to server(register) : " + user.getToken());
             user.pushTokenToServer();
 
             Intent intent = new Intent(getApplicationContext(), LoginMain.class);

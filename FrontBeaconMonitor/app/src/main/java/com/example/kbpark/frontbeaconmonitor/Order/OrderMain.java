@@ -41,7 +41,7 @@ public class OrderMain extends Fragment implements View.OnClickListener, LoginMa
             case R.id.btn_order:
                 Toast.makeText(getContext(), "order clicked! 주문했습니다.", Toast.LENGTH_SHORT).show();
 
-                FragmentManager manager = getActivity().getSupportFragmentManager(); // 여기 괜찮을까?
+                FragmentManager manager = getActivity().getSupportFragmentManager();
                 manager.beginTransaction()
                         .add(R.id.contaner, new OrderProduct())
                         .commit();

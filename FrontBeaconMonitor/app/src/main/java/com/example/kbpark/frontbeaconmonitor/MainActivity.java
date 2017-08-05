@@ -142,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
 
             String loginRes = user.login(); // 실제로 login이 일어나는 부분 ///////////////////////////////////////////
 
+            // 1. send token to server (때에 따라 Token이 refresh 될 수도 있으므로 register 뿐만 아니라 login할때도 보낸다! )
+            Log.i("TOKEN", "token to server(login) : " + user.getToken());
+            user.pushTokenToServer();
+
             Intent intent = new Intent(getApplicationContext(), LoginMain.class);
             // intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
