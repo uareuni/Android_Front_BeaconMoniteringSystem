@@ -7,7 +7,7 @@ import retrofit2.http.POST;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.LOGIN_ADDITIONAL_URL;
 import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_ENQUEUE_URL;
-import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_TOKENPUSH_URL;
+import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_TOKENREFRESH_URL;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_ADDITIONAL_URL;
 
 /**
@@ -28,17 +28,20 @@ public interface ServiceApi
                                   @Field("res_pw") String res_pw,
                                   @Field("res_birth") String res_birth,
                                   @Field("res_address") String res_address,
-                                  @Field("res_phone") String res_phone
+                                  @Field("res_phone") String res_phone,
+                                  @Field("res_token") String res_token
     );
 
     @FormUrlEncoded
     @POST(ORDER_ENQUEUE_URL)
-    Call<OrderResult> order(@Field("orderList") String[] orderList); // name, phone, product, num
-
+    Call<OrderResult> order(@Field("orderList") String[] orderList); // name, phone, product(token : space bar), num
+    // ex) String product = "아메키라노 에므스 망고스무디"; // token space
 
     @FormUrlEncoded
-    @POST(ORDER_TOKENPUSH_URL)
+    @POST(ORDER_TOKENREFRESH_URL)
     Call<TokenResult> pushTokenToServer(@Field("token") String token, @Field("id") String id); // token, id
+
+
 }
 
 

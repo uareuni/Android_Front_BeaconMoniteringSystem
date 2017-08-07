@@ -41,9 +41,9 @@ public class User
     String loginRes;
     String registerRes;
     String orderRes;
-    static String tokenRes;
+    String tokenRes;
 
-    static String id; // email 형식
+    String id; // email 형식
     String name = "박경배";
     String pw;
     String birth;
@@ -51,7 +51,7 @@ public class User
     String phone;
     String product;
     String num; // 주문한 product의 개수
-    String token;
+    static String token;
 
     private User() {
         retrofitInit();
@@ -130,7 +130,7 @@ public class User
     {
         ServiceApi serviceApi = retrofit.create(ServiceApi.class);
 
-        final Call<RegisterResult> res = serviceApi.resister(id, name, pw, birth, address, phone); // register (실제 통신이 이루어지는 곳)
+        final Call<RegisterResult> res = serviceApi.resister(id, name, pw, birth, address, phone, User.getInstance().getToken()); // register (실제 통신이 이루어지는 곳)
 
         // 3. 받아온거 뽑아내기 (동기)
         new Thread(new Runnable() {
@@ -298,8 +298,8 @@ public class User
 
 
     // setter
-    public static void setId(String id) {
-        User.id = id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -327,7 +327,7 @@ public class User
     }
 
     // getter
-    public static String getId() {
+    public String getId() {
         return id;
     }
 

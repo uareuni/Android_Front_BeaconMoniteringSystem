@@ -21,7 +21,7 @@ public class Cons
 
     // 3. order
     public static final String ORDER_ENQUEUE_URL = "/order/enqueue";
-    public static final String ORDER_TOKENPUSH_URL = "/order/complete_and_push";
+    public static final String ORDER_TOKENREFRESH_URL = "/token_initialize"; // refresh
 
     public static final String ORDER_SUCCESS = "200";
     public static final String ORDER_FAILURE = "401";
@@ -38,7 +38,9 @@ public class Cons
     public static final boolean IN = true;
     public static boolean MONITORING_STATE = OUT;
 
-
+    //
+    public static final String PAYMENT_COMPLETE = "결제 완료";
+    public static final String ORDER_COMPLETE = "주문 완료";
 
 
 

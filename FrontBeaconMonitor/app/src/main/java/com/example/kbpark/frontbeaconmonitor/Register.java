@@ -49,19 +49,19 @@ public class Register extends AppCompatActivity
             Toast.makeText(getApplicationContext(), "모든 항목을 기입하십시오.", Toast.LENGTH_SHORT).show();
         } else
         {
-            // 1. register
+            // 1. register (w/ created token(init))
             User user = User.getInstance();
+            user.setId(email);
             user.setName(name);
             user.setPw(pw);
             user.setAddress(address);
             user.setBirth(birth);
             user.setPhone(phone);
+            user.setToken(user.getToken());
 
             String registerRes = user.register(); // 실제 register가 일어나는 부분
 
-            // 2. send token to server
             Log.i("TOKEN", "token to server(register) : " + user.getToken());
-            user.pushTokenToServer();
 
             Intent intent = new Intent(getApplicationContext(), LoginMain.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

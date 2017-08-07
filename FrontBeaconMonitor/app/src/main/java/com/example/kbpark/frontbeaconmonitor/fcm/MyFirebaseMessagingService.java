@@ -6,21 +6,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Handler;
 import android.os.PowerManager;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
+import android.util.Log;
 
 import com.example.kbpark.frontbeaconmonitor.MainActivity;
 import com.example.kbpark.frontbeaconmonitor.R;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
-    private static final String TAG = "FirebaseMsgService";
+    private static final String TAG = "TOKEN";
 
     // [START receive_message]
     @Override
@@ -38,43 +34,57 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
 //                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
 
+        // TODO(developer): Handle FCM messages here.
+        // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+        Log.d(TAG, "From: " + remoteMessage.getFrom());
+
+        // Check if message contains a data payload.
+        if (remoteMessage.getData().size() > 0) {
+            Log.d(TAG, "Message data payload: " + remoteMessage.getData().get("data")); // 요기서 server에 저장된 image url을 받아올 것!
+        }
+
+        // Check if message contains a notification payload.
+        if (remoteMessage.getNotification() != null) {
+            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+        }
 
 
-/**-------------------------- 이거 되는지 안되는지는 아직 test 못해봄!! --------------------------**/
-        Handler handler = new Handler();
-
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-
-                // 1. popup : 결제 하시겠습니까? 결제가 되었습니다
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext());
-
-                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View layout = inflater.inflate(R.layout.ad_dialog, null);
-                ImageView adImage = (ImageView) layout.findViewById(R.id.ad_image);
-                adImage.setImageResource(R.mipmap.americano);
-
-                // 제목
-                alertDialogBuilder.setTitle("광고");
-
-                // AlertDialog
-                alertDialogBuilder
-                        .setMessage("주문하신 상품 나왔습니다.")
-                        .setCancelable(false)
-                        .setView(layout)
-                        .setPositiveButton("확인", null);
-
-                // 다이얼로그 생성
-                AlertDialog alertDialog = alertDialogBuilder.create();
-
-                // 다이얼로그 보여주기
-                alertDialog.show();
-            }
-        });
-/**-----------------------------------------------------------------------------------------**/
-
-
+//
+///**-------------------------- 이거 되는지 안되는지는 아직 test 못해봄!! --------------------------**/
+//        Handler handler = new Handler();
+//
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                // 1. popup : 결제 하시겠습니까? 결제가 되었습니다
+//                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext());
+//
+//                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                View layout = inflater.inflate(R.layout.ad_dialog, null);
+//                ImageView adImage = (ImageView) layout.findViewById(R.id.ad_image);
+//                adImage.setImageResource(R.mipmap.americano);
+//
+//                // 제목
+//                alertDialogBuilder.setTitle("광고");
+//
+//                // AlertDialog
+//                alertDialogBuilder
+//                        .setMessage("주문하신 상품 나왔습니다.")
+//                        .setCancelable(false)
+//                        .setView(layout)
+//                        .setPositiveButton("확인", null);
+//
+//                // 다이얼로그 생성
+//                AlertDialog alertDialog = alertDialogBuilder.create();
+//
+//                // 다이얼로그 보여주기
+//                alertDialog.show();
+//            }
+//        });
+///**-----------------------------------------------------------------------------------------**/
+//
+//
 
 
 

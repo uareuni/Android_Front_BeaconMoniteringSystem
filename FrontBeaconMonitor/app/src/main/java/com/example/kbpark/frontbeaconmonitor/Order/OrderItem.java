@@ -1,5 +1,7 @@
 package com.example.kbpark.frontbeaconmonitor.Order;
 
+import com.example.kbpark.frontbeaconmonitor.Cons;
+
 /**
  * Created by KBPark on 2016. 8. 2..
  */
@@ -11,11 +13,13 @@ public class OrderItem
     int product_image;
     String product;
     String num;
+    String orderState;
 
     OrderItem(String product, String num)
     {
         this.product = product;
         this.num = num;
+        orderState = Cons.PAYMENT_COMPLETE;
     }
 
     public int getImageRes() {
@@ -30,6 +34,10 @@ public class OrderItem
         return num;
     }
 
+    public String getOrderState() {
+        return orderState;
+    }
+
     public void setImageRes(int resId) {
         this.product_image = resId;
     }
@@ -40,5 +48,9 @@ public class OrderItem
 
     public void setProductNum(String num) {
         this.num = num;
+    }
+
+    public void setOrderState(String orderState) {
+        this.orderState = orderState;
     }
 }
