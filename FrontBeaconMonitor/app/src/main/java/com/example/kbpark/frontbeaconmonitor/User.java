@@ -194,11 +194,13 @@ public class User
         }
 
 
-        String[] orderList = new String[4];
+        String[] orderList = new String[6];
         orderList[0] = id;
         orderList[1] = phone;
         orderList[2] = product;
         orderList[3] = num;
+        orderList[4] = "6461";
+        orderList[5] = "6461";
 
 
 

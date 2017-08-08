@@ -59,9 +59,13 @@ public class Register extends AppCompatActivity
             user.setPhone(phone);
             user.setToken(user.getToken());
 
+            Log.i("PHONE", "phone : " + phone);
+
             String registerRes = user.register(); // 실제 register가 일어나는 부분
 
+            // 2. token to server
             Log.i("TOKEN", "token to server(register) : " + user.getToken());
+            User.getInstance().pushTokenToServer();
 
             Intent intent = new Intent(getApplicationContext(), LoginMain.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.util.Log;
 
 import com.example.kbpark.frontbeaconmonitor.Cons;
+import com.example.kbpark.frontbeaconmonitor.User;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.IN;
 import static com.example.kbpark.frontbeaconmonitor.Cons.MONITORING_STATE;
@@ -48,8 +49,9 @@ public class OrderEventService extends Service implements Runnable
                         if(((OrderItem)orderAdapter.getItem(i)).getOrderState().equals(Cons.PAYMENT_COMPLETE)) // '결제 완료'
                         {
                             Log.i("ORDER_TEST", "주문할 item 이름 : " + orderAdapter.getProduct(i) + "\n");
+
                             // 1. 주문하기 (server로 보내기)
-//                        User.getInstance().order(orderAdapter.getProduct(i), orderAdapter.getProductNum(i));
+                            User.getInstance().order(orderAdapter.getProduct(i), orderAdapter.getProductNum(i));
 
                             /** 여기서 '결제완료' -> '주문완료'  **/
                             new Handler(Looper.getMainLooper()).post(new ChangeView(i));
