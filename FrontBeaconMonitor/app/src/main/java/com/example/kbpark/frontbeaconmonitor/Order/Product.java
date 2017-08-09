@@ -6,27 +6,38 @@ package com.example.kbpark.frontbeaconmonitor.Order;
 
 public class Product
 {
+    int imageRes;
     String name;
+    String num;
     int price;
 
-    public Product(String name, int price) {
+    public Product(String name, int price, int imageRes) {
         this.name = name;
         this.price = price;
-    }
-
-    public String getName() {
-        return name;
+        this.imageRes = imageRes;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setImageRes(int imageRes) {
+        this.imageRes = imageRes;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public int getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public int getImageRes() {
+        return imageRes;
     }
 }

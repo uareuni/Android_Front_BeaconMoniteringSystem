@@ -11,14 +11,16 @@ import com.example.kbpark.frontbeaconmonitor.Cons;
 public class OrderItem
 {
     int product_image;
-    String num;
     String product;
+    String num;
+    int price;
     String orderState;
 
-    OrderItem(String product, String num)
+    OrderItem(String product, String num, int price)
     {
         this.product = product;
         this.num = num;
+        this.price = price;
         orderState = Cons.PAYMENT_COMPLETE;
     }
 
@@ -32,6 +34,10 @@ public class OrderItem
 
     public String getProductNum() {
         return num;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     public String getOrderState() {
@@ -48,6 +54,10 @@ public class OrderItem
 
     public void setProductNum(String num) {
         this.num = num;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public void setOrderState(String orderState) {

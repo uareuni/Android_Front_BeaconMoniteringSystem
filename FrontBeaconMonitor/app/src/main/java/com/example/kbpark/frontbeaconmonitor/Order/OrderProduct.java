@@ -24,6 +24,8 @@ import com.example.kbpark.frontbeaconmonitor.R;
 
 import static com.example.kbpark.frontbeaconmonitor.LoginMain.curTabListener;
 import static com.example.kbpark.frontbeaconmonitor.Order.OrderCart.orderCartAdapter;
+import static com.example.kbpark.frontbeaconmonitor.R.mipmap.caffelatte;
+import static com.example.kbpark.frontbeaconmonitor.R.mipmap.lemonade;
 
 /**
  * Created by KBPark on 2017. 8. 1..
@@ -61,7 +63,9 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
     Context context;
 
     String product;
-    int num = 0; // the number of product
+    int num = 1; // the number of product
+    int price;
+    int imageRes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -79,7 +83,6 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
     @Override
     public void onClick(View v)
     {
-
         if(v.getId() != R.id.btn_pay)
         {
             final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
@@ -92,28 +95,40 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
             switch (v.getId())
             {
                 case R.id.btn_menu1:
-                    product = "아메리카노";
-                    prodImage.setImageResource(R.mipmap.americano);
+                    product = americano.getName();
+                    prodImage.setImageResource(americano.getImageRes());
+                    imageRes = americano.getImageRes();
+                    price = americano.getPrice();
                     break;
                 case R.id.btn_menu2:
-                    product = "카페라떼";
-                    prodImage.setImageResource(R.mipmap.caffelatte);
+                    product = caffeLatte.getName();
+                    prodImage.setImageResource(caffeLatte.getImageRes());
+                    imageRes = caffeLatte.getImageRes();
+                    price = caffeLatte.getPrice();
                     break;
                 case R.id.btn_menu3:
-                    product = "카푸치노";
-                    prodImage.setImageResource(R.mipmap.cappuccino);
+                    product = cappuccino.getName();
+                    prodImage.setImageResource(cappuccino.getImageRes());
+                    imageRes = cappuccino.getImageRes();
+                    price = cappuccino.getPrice();
                     break;
                 case R.id.btn_menu4:
-                    product = "레몬에이드";
-                    prodImage.setImageResource(R.mipmap.lemonade);
+                    product = lemonAde.getName();
+                    prodImage.setImageResource(lemonAde.getImageRes());
+                    imageRes = lemonAde.getImageRes();
+                    price = lemonAde.getPrice();
                     break;
                 case R.id.btn_menu5:
-                    product = "체리에이드";
-                    prodImage.setImageResource(R.mipmap.cherryade);
+                    product = cherryAde.getName();
+                    prodImage.setImageResource(cherryAde.getImageRes());
+                    imageRes = cherryAde.getImageRes();
+                    price = cherryAde.getPrice();
                     break;
                 case R.id.btn_menu6:
-                    product = "복숭아아이스티";
-                    prodImage.setImageResource(R.mipmap.peachicetea);
+                    product = peachIceTea.getName();
+                    prodImage.setImageResource(peachIceTea.getImageRes());
+                    imageRes = peachIceTea.getImageRes();
+                    price = peachIceTea.getPrice();
                     break;
             }
 
@@ -129,7 +144,10 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
                                 public void onClick(DialogInterface dialog, int id) {
 
                                     /** 3. listview에 추가하기 **/
-                                    prodAdapter.addItem(product, num + "");
+                                    OrderItem item = new OrderItem(product, num+"", price);
+                                    item.setImageRes(imageRes);
+                                    prodAdapter.addItem(item);
+                                    OrderProductAdapter.setListViewHeightBasedOnChildren(prodOrder); // item 갯수에 따라 동적으로 listview 크기 설정
 
                                 }
                             })
@@ -156,6 +174,7 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
 
             /** 2. 수량 결정 **/
             RadioGroup radioGroup = (RadioGroup) layout.findViewById(R.id.radioGroup);
+            radioGroup.check(R.id.radio_1); // default
             radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -233,12 +252,12 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
     {
         prodAdapter = new OrderProductAdapter();
 
-        americano = new Product("아메리카노", 2500);
-        caffeLatte = new Product("카페라떼", 3200);
-        cappuccino = new Product("카푸치노", 3200);
-        lemonAde = new Product("레몬 에이드", 3500);
-        cherryAde = new Product("체리 에이드", 3500);
-        peachIceTea = new Product("복숭아 아이스티", 2800);
+        americano = new Product("아메리카노", 2500, R.mipmap.americano);
+        caffeLatte = new Product("카페라떼", 3200, R.mipmap.caffelatte);
+        cappuccino = new Product("카푸치노", 3200, R.mipmap.cappuccino);
+        lemonAde = new Product("레몬에이드", 3500, lemonade);
+        cherryAde = new Product("체리에이드", 3500, R.mipmap.cherryade);
+        peachIceTea = new Product("복숭아아이스티", 2800, R.mipmap.peachicetea);
 
         btn_americano = (Button) rootView.findViewById(R.id.btn_menu1);
         btn_caffeLatte = (Button) rootView.findViewById(R.id.btn_menu2);
@@ -271,9 +290,9 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
         btn_pay.setOnClickListener(this);
 
         btn_americano.setBackgroundResource(R.mipmap.americano);
-        btn_caffeLatte.setBackgroundResource(R.mipmap.caffelatte);
+        btn_caffeLatte.setBackgroundResource(caffelatte);
         btn_cappuccino.setBackgroundResource(R.mipmap.cappuccino);
-        btn_lemonAde.setBackgroundResource(R.mipmap.lemonade);
+        btn_lemonAde.setBackgroundResource(lemonade);
         btn_cherryAde.setBackgroundResource(R.mipmap.cherryade);
         btn_peachIceTea.setBackgroundResource(R.mipmap.peachicetea);
 
@@ -288,6 +307,7 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
             }
         });
         prodOrder.setAdapter(prodAdapter);
+//        OrderProductAdapter.setListViewHeightBasedOnChildren(prodOrder); // item 갯수에 따라 동적으로 listview 크기 설정 (아예 추가가안되네)
 
     }
 
