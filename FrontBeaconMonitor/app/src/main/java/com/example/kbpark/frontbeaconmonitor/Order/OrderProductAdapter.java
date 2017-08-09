@@ -19,7 +19,7 @@ public class OrderProductAdapter extends BaseAdapter
 {
     private ArrayList<OrderItem> ORDER_ITEMS = new ArrayList<>();
 
-    public void addItem(String product, int num)
+    public void addItem(String product, String num)
     {
         ORDER_ITEMS.add(new OrderItem(product, num));
         this.notifyDataSetChanged();

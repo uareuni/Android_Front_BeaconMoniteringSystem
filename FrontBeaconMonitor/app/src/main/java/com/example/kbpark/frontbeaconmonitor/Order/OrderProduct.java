@@ -129,7 +129,7 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
                                 public void onClick(DialogInterface dialog, int id) {
 
                                     /** 3. listview에 추가하기 **/
-                                    prodAdapter.addItem(product, num);
+                                    prodAdapter.addItem(product, num + "");
 
                                 }
                             })
@@ -231,6 +231,8 @@ public class OrderProduct extends Fragment implements View.OnClickListener, Logi
 
     private void viewInit(View rootView)
     {
+        prodAdapter = new OrderProductAdapter();
+
         americano = new Product("아메리카노", 2500);
         caffeLatte = new Product("카페라떼", 3200);
         cappuccino = new Product("카푸치노", 3200);

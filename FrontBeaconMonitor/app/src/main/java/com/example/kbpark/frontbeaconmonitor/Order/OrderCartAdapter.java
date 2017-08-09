@@ -19,7 +19,7 @@ public class OrderCartAdapter extends BaseAdapter
     /** 보통 collection framework이 adapter에 붙어서 adapter를 통해서 실 item에 add, remove하게 하는것이 일반적임! **/
     private ArrayList<OrderItem> ORDER_ITEMS = new ArrayList<>();
 
-    public void addItem(String product, int num)
+    public void addItem(String product, String num)
     {
         ORDER_ITEMS.add(new OrderItem(product, num));
         this.notifyDataSetChanged();
@@ -34,7 +34,7 @@ public class OrderCartAdapter extends BaseAdapter
         return ORDER_ITEMS.get(idx).getProduct();
     }
 
-    public int getProductNum(int idx){
+    public String getProductNum(int idx){
         return ORDER_ITEMS.get(idx).getProductNum();
     }
 
