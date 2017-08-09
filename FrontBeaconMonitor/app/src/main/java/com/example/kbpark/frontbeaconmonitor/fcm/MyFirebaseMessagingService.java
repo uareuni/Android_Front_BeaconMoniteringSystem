@@ -6,15 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Handler;
 import android.os.PowerManager;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.example.kbpark.frontbeaconmonitor.MainActivity;
 import com.example.kbpark.frontbeaconmonitor.R;
@@ -54,41 +49,41 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
         }
 
 
-
-/**-------------------------- 이거 되는지 안되는지는 아직 test 못해봄!! --------------------------**/
-        Handler handler = new Handler();
-
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-
-                // 1. popup : 결제 하시겠습니까? 결제가 되었습니다
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext());
-
-                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View layout = inflater.inflate(R.layout.ad_dialog, null);
-                ImageView adImage = (ImageView) layout.findViewById(R.id.ad_image);
-                adImage.setImageResource(R.mipmap.americano);
-
-                // 제목
-                alertDialogBuilder.setTitle("광고");
-
-                // AlertDialog
-                alertDialogBuilder
-                        .setMessage("주문하신 상품 나왔습니다.")
-                        .setCancelable(false)
-                        .setView(layout)
-                        .setPositiveButton("확인", null);
-
-                // 다이얼로그 생성
-                AlertDialog alertDialog = alertDialogBuilder.create();
-
-                // 다이얼로그 보여주기
-                alertDialog.show();
-            }
-        });
-/**-----------------------------------------------------------------------------------------**/
-
+//
+///**-------------------------- 이거 되는지 안되는지는 아직 test 못해봄!! --------------------------**/
+//        Handler handler = new Handler(Looper.getMainLooper());
+//
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                // 1. popup : 결제 하시겠습니까? 결제가 되었습니다
+//                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext()); // MainActivity.this로 바꿔봐!
+//
+//                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                View layout = inflater.inflate(R.layout.ad_dialog, null);
+//                ImageView adImage = (ImageView) layout.findViewById(R.id.ad_image);
+//                adImage.setImageResource(R.mipmap.americano);
+//
+//                // 제목
+//                alertDialogBuilder.setTitle("광고");
+//
+//                // AlertDialog
+//                alertDialogBuilder
+//                        .setMessage("주문하신 상품 나왔습니다.")
+//                        .setCancelable(false)
+//                        .setView(layout)
+//                        .setPositiveButton("확인", null);
+//
+//                // 다이얼로그 생성
+//                AlertDialog alertDialog = alertDialogBuilder.create();
+//
+//                // 다이얼로그 보여주기
+//                alertDialog.show();
+//            }
+//        });
+///**-----------------------------------------------------------------------------------------**/
+//
 
         //추가한것
         sendNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());

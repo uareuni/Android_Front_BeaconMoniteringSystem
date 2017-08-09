@@ -14,14 +14,19 @@ import java.util.ArrayList;
 /**
  * Created by KBPark on 2016. 8. 2..
  */
-public class OrderAdapter extends BaseAdapter
+public class OrderCartAdapter extends BaseAdapter
 {
     /** 보통 collection framework이 adapter에 붙어서 adapter를 통해서 실 item에 add, remove하게 하는것이 일반적임! **/
     private ArrayList<OrderItem> ORDER_ITEMS = new ArrayList<>();
 
-    public void addItem(String product, String num)
+    public void addItem(String product, int num)
     {
         ORDER_ITEMS.add(new OrderItem(product, num));
+        this.notifyDataSetChanged();
+    }
+
+    public void addItem(OrderItem item){
+        ORDER_ITEMS.add(item);
         this.notifyDataSetChanged();
     }
 
@@ -29,7 +34,7 @@ public class OrderAdapter extends BaseAdapter
         return ORDER_ITEMS.get(idx).getProduct();
     }
 
-    public String getProductNum(int idx){
+    public int getProductNum(int idx){
         return ORDER_ITEMS.get(idx).getProductNum();
     }
 
@@ -54,7 +59,7 @@ public class OrderAdapter extends BaseAdapter
         if(convertView == null)
         {
             LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.order_item, parent, false);
+            convertView = inflater.inflate(R.layout.order_cart_item, parent, false);
         }
 
         OrderItem item = ORDER_ITEMS.get(position);

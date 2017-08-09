@@ -24,7 +24,7 @@ import static com.example.kbpark.frontbeaconmonitor.Cons.ORDER_SUCCESS;
 import static com.example.kbpark.frontbeaconmonitor.Cons.QUERY_ERROR;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_FAILURE;
 import static com.example.kbpark.frontbeaconmonitor.Cons.REGISTER_SUCCESS;
-import static com.example.kbpark.frontbeaconmonitor.Order.OrderCart.orderAdapter;
+import static com.example.kbpark.frontbeaconmonitor.Order.OrderCart.orderCartAdapter;
 
 /**
  * Created by KBPark on 2017. 1. 31..
@@ -42,13 +42,15 @@ public class User
     String registerRes;
     String orderRes;
     String tokenRes;
+    int stampRes;
+    int waitRes;
 
     String id; // email 형식
     String name = "박경배";
     String pw;
     String birth;
     String address;
-    String phone;
+    String phone = "010-0000-0000";
     String product;
     String num; // 주문한 product의 개수
     static String token;
@@ -79,7 +81,12 @@ public class User
             public void run()
             {
                 try {
-                    loginRes = res.execute().body().getLoginResult();
+                    LoginResult login = res.execute().body();
+
+                    loginRes = login.getLoginResult();
+                    stampRes = login.getNumOfStamp();
+
+                    Log.i("TEST", "stamp 값 : " + stampRes);
 
                     // test log
                     if(loginRes != null)
@@ -189,8 +196,8 @@ public class User
         ServiceApi serviceApi = retrofit.create(ServiceApi.class);
 
         // listview의 item갯수만큼 product 뽑아내서 보내기!
-        for(int i=0; i<orderAdapter.getCount(); i++){
-            Log.i("adapter", "item : " + orderAdapter.getItem(i) + "\n");
+        for(int i=0; i<orderCartAdapter.getCount(); i++){
+            Log.i("adapter", "item : " + orderCartAdapter.getItem(i) + "\n");
         }
 
 
@@ -199,8 +206,8 @@ public class User
         orderList[1] = phone;
         orderList[2] = product;
         orderList[3] = num;
-        orderList[4] = "6461";
-        orderList[5] = "6461";
+        orderList[4] = "5010";
+        orderList[5] = "6462";
 
 
 
@@ -212,7 +219,14 @@ public class User
             public void run()
             {
                 try {
-                    orderRes = res.execute().body().getOrderResult();
+
+                    OrderResult order = res.execute().body();
+                        orderRes = order.getOrderResult();
+                        waitRes = order.getWaitResult();
+                        stampRes = order.getStampResult();
+
+                    Log.d("TEST", "wating line : " + waitRes);
+                    Log.d("TEST", "stamp 갯수 : " + stampRes);
 
                     // test log
                     if(orderRes == null)

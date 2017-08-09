@@ -23,7 +23,7 @@ import static com.example.kbpark.frontbeaconmonitor.LoginMain.curTabListener;
 
 public class OrderCart extends Fragment implements LoginMain.onKeyBackPressedListener, AdapterView.OnItemClickListener
 {
-    public static OrderAdapter orderAdapter = new OrderAdapter();
+    public static OrderCartAdapter orderCartAdapter = new OrderCartAdapter();
 
     TabLayout tabLayout;
     ListView cartOrder;
@@ -36,7 +36,7 @@ public class OrderCart extends Fragment implements LoginMain.onKeyBackPressedLis
         // for test
         cartOrder = (ListView) rootView.findViewById(R.id.listview_order_cart);
         cartOrder.setOnItemClickListener(this);
-        cartOrder.setAdapter(orderAdapter);
+        cartOrder.setAdapter(orderCartAdapter);
 
         return rootView;
     }
@@ -50,7 +50,7 @@ public class OrderCart extends Fragment implements LoginMain.onKeyBackPressedLis
         tabLayout = (TabLayout)((LoginMain)context).findViewById(R.id.tabs);
         tabLayout.setVisibility(View.INVISIBLE); // GONE으로 하고 layout param로 layout_weight값 맞춰주는게 더 좋긴한데, 일단은 INVISIBLE.
 
-        cartOrder = (ListView) ((LoginMain) context).findViewById(R.id.listview_order_cart);
+//        cartOrder = (ListView) ((LoginMain) context).findViewById(R.id.listview_order_cart);
 
     }
 

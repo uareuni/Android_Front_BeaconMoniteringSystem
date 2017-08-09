@@ -12,7 +12,7 @@ import com.example.kbpark.frontbeaconmonitor.User;
 
 import static com.example.kbpark.frontbeaconmonitor.Cons.IN;
 import static com.example.kbpark.frontbeaconmonitor.Cons.MONITORING_STATE;
-import static com.example.kbpark.frontbeaconmonitor.Order.OrderCart.orderAdapter;
+import static com.example.kbpark.frontbeaconmonitor.Order.OrderCart.orderCartAdapter;
 
 /**
  * Created by KBPark on 2017. 8. 4..
@@ -41,17 +41,17 @@ public class OrderEventService extends Service implements Runnable
                 Thread.sleep(5 * 1000);
 
                 // Beacon 안에 들어와있고 && cart에 주문할게 있으면!
-                if((MONITORING_STATE == IN) && (orderAdapter.getCount() != 0))
+                if((MONITORING_STATE == IN) && (orderCartAdapter.getCount() != 0))
                 {
                     // listview의 item갯수만큼 product 뽑아내서 보내기!
-                    for (int i = 0; i < orderAdapter.getCount(); i++)
+                    for (int i = 0; i < orderCartAdapter.getCount(); i++)
                     {
-                        if(((OrderItem)orderAdapter.getItem(i)).getOrderState().equals(Cons.PAYMENT_COMPLETE)) // '결제 완료'
+                        if(((OrderItem)orderCartAdapter.getItem(i)).getOrderState().equals(Cons.PAYMENT_COMPLETE)) // '결제 완료'
                         {
-                            Log.i("ORDER_TEST", "주문할 item 이름 : " + orderAdapter.getProduct(i) + "\n");
+                            Log.i("ORDER_TEST", "주문할 item 이름 : " + orderCartAdapter.getProduct(i) + "\n");
 
                             // 1. 주문하기 (server로 보내기)
-                            User.getInstance().order(orderAdapter.getProduct(i), orderAdapter.getProductNum(i));
+                            User.getInstance().order(orderCartAdapter.getProduct(i), orderCartAdapter.getProductNum(i) + "");
 
                             /** 여기서 '결제완료' -> '주문완료'  **/
                             new Handler(Looper.getMainLooper()).post(new ChangeView(i));
@@ -76,9 +76,9 @@ public class OrderEventService extends Service implements Runnable
 
         @Override
         public void run() {
-            ((OrderItem)orderAdapter.getItem(i)).setOrderState(Cons.ORDER_COMPLETE); // '주문 완료'
+            ((OrderItem)orderCartAdapter.getItem(i)).setOrderState(Cons.ORDER_COMPLETE); // '주문 완료'
 //            Log.i("ORDER_TEST", "View 변경 : " + ((OrderItem) orderAdapter.getItem(i)).getOrderState());
-            orderAdapter.notifyDataSetChanged();
+            orderCartAdapter.notifyDataSetChanged();
         }
     }
 

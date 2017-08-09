@@ -1,16 +1,12 @@
 package com.example.kbpark.frontbeaconmonitor;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.kbpark.frontbeaconmonitor.Order.OrderCart;
 import com.example.kbpark.frontbeaconmonitor.Order.OrderEventService;
@@ -52,31 +48,31 @@ public class LoginMain extends AppCompatActivity implements View.OnClickListener
 
 
 
-
-/** for testing dialog **/
-        // 1. popup : 결제 하시겠습니까? 결제가 되었습니다
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.ad_dialog, null);
-        ImageView adImage = (ImageView) layout.findViewById(R.id.ad_image);
-        adImage.setImageResource(R.mipmap.americano);
-
-        // 제목
-        alertDialogBuilder.setTitle("광고");
-        // AlertDialog
-        alertDialogBuilder
-                .setMessage("주문하신 상품 나왔습니다.")
-                .setCancelable(false)
-                .setView(layout)
-                .setPositiveButton("확인", null);
-
-        // 다이얼로그 생성
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // 다이얼로그 보여주기
-        alertDialog.show();
-/** for testing dialog **/
+//
+///** for testing dialog **/
+//        // 1. popup : 결제 하시겠습니까? 결제가 되었습니다
+//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+//
+//        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        View layout = inflater.inflate(R.layout.ad_dialog, null);
+//        ImageView adImage = (ImageView) layout.findViewById(R.id.ad_image);
+//        adImage.setImageResource(R.mipmap.americano);
+//
+//        // 제목
+//        alertDialogBuilder.setTitle("광고");
+//        // AlertDialog
+//        alertDialogBuilder
+//                .setMessage("주문하신 상품 나왔습니다.")
+//                .setCancelable(false)
+//                .setView(layout)
+//                .setPositiveButton("확인", null);
+//
+//        // 다이얼로그 생성
+//        AlertDialog alertDialog = alertDialogBuilder.create();
+//
+//        // 다이얼로그 보여주기
+//        alertDialog.show();
+///** for testing dialog **/
 
 
 
